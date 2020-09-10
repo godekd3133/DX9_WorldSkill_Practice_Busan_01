@@ -3,6 +3,8 @@
 enum Axis
 {
 	Foward,
+	RF,
+	LF,
 	Back,
 	Right,
 	Left
@@ -16,12 +18,12 @@ public:
 
 public:
 	CScheduleAdmin  * sa;
-
+	Vector3 m_vCharactorDir;
 	Vector3 m_vPos;
 	Vector3 m_vLookAt;
 	Vector3 m_vUp;
 	Vector3 m_vFoward = Vector3(0, 0, 1);
-	Vector3 m_vCharactorAxis[4];
+	Vector3 m_vCharactorAxis[6];
 	Matrix m_matView;
 	Matrix m_matProj;
 
@@ -30,7 +32,7 @@ public:
 	Vector3 m_vOffset = Vector3(0, 0, 0);
 	float m_fCameraTime;
 	float m_fShakePower;
-	float m_fSensitivity = 10.f;
+	float m_fSensitivity = 50.f;
 public:
 	void Update();
 	void SetTransform();
@@ -40,6 +42,7 @@ public:
 	void Shake(float _fTime, float _fPower);
 	void Follow(CGameObject * _Follow, float _Distance)
 	{
+		m_bScrolling = true;
 		m_pFollowObject = _Follow;
 		m_fDistance = _Distance;
 	}
@@ -55,6 +58,10 @@ public:
 	bool m_bScrolling = false;
 	float m_fScrollSpeed;
 	float m_fCurSpeed;
+	bool RayCast(CMeshRenderer* _pTarget, Vector3 _vPos, Vector3 _vDirection, float _fDistance, CollisionInfo& _Info);
+
+	bool RayCastAtBox(Vector3 _Radius, Matrix _matWorld, Vector3 _vPos, Vector3 _vDirection, float _fDistance, CollisionInfo& _Info);
+	bool RayCastAtSphere(LPD3DXMESH _Sphere, Matrix _matWorld, Vector3 _vPos, Vector3 _vDirection, float _fDistance, CollisionInfo& _Info);
 
 };
 

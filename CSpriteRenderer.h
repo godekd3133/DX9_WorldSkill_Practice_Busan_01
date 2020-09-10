@@ -14,7 +14,7 @@ public:
 	virtual void LateUpdate() override;
 	virtual void OnRender() override;
 	virtual void OnDestroy() override;
-	virtual void OnCollision() override;
+	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
 	CSprite * m_pSprite;

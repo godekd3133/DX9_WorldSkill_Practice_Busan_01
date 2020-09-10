@@ -18,6 +18,7 @@ public:
 	bool KeyDown(int _Key);
 	bool KeyPress(int _Key);
 	bool KeyUp(int _Key);
+	float TimeScale = 1.f;
 };
 #define INPUT (*CInputManager::GetInstance())
 

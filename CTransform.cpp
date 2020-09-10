@@ -34,7 +34,7 @@ void CTransform::OnDestroy()
 {
 }
 
-void CTransform::OnCollision()
+void CTransform::OnCollision(CGameObject * _pObject)
 {
 }
 

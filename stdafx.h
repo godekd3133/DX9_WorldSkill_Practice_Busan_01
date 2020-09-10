@@ -6,6 +6,7 @@
 #include <map>
 #include <functional>
 #include <queue>
+#include <fstream>
 #include <algorithm>
 #include <functional>
 #include <set>
@@ -17,10 +18,11 @@ using namespace std;
 
 const INT WINSIZEX = 1920;
 const INT WINSIZEY = 1080;
-const bool WINDOWED = true;
+const bool WINDOWED = FALSE;
 
 #define g_Device DXUTGetD3D9Device()
-#define dt DXUTGetElapsedTime()
+#define dt DXUTGetElapsedTime() * INPUT.TimeScale
+#define udt  DXUTGetElapsedTime()
 
 using Vector2 = D3DXVECTOR2;
 using Vector3 = D3DXVECTOR3;
@@ -103,10 +105,14 @@ namespace my
 	}
 };
 using namespace my;
-enum class RenderMode {RM_Default , RM_UI, RM_Billboard};
-enum class SortingLayer { SR_Default,SR_Effect};
+enum class RenderMode {RM_Default , RM_UI, RM_Billboard, RM_BillboardNonUI};
+enum class SortingLayer { SR_Default,SR_Effect, SR_UI,SR_UI2,SR_SCREEEN};
 
-enum class Tag {Untagged,Map};
+enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
+#include "DXUT/Optional/SDKsound.h"
+#include "DXUT/Optional/SDKwavefile.h"
+#pragma comment(lib, "dsound.lib")
+
 #include "CScheduleAdmin.h"
 #include "CSprite.h"
 #include "CScene.h"
@@ -122,12 +128,22 @@ enum class Tag {Untagged,Map};
 #include "CEffect.h"
 #include "CText.h"
 
+#include "CStageMap.h"
 #include "CRigidBody.h"
 #include "CAnimation2D.h"
 #include "CAnimation3D.h"
 #include "CAnimator3D.h"
 #include "CAnimator2D.h"
 #include "CCollider.h"
+#include "CPlayerMovement.h"
+#include "CDamageFont.h"
+
+#include "CEnemy.h"
+
+ 
+#include "CButton.h"
+#include "CPlayerUI.h"
+#include "CItem.h"
 
 #include "CSingleton.h"
 
@@ -136,3 +152,4 @@ enum class Tag {Untagged,Map};
 #include "CInputManager.h"
 #include "CSceneManager.h"
 #include "CObjectManager.h"
+#include "CGameManager.h"

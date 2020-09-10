@@ -31,12 +31,13 @@ void CAnimation2D::Update()
 			else
 				m_iCurFrame = 0;
 
-			if (auto find = m_mapEvent.find(m_iCurFrame); find != m_mapEvent.end())
+
+		}
+		if (auto find = m_mapEvent.find(m_iCurFrame); find != m_mapEvent.end())
+		{
+			for (auto iter : m_mapEvent[m_iCurFrame])
 			{
-				for (auto iter : m_mapEvent[m_iCurFrame])
-				{
-					iter();
-				}
+				iter();
 			}
 		}
 	}

@@ -320,7 +320,7 @@ public:
         m_state.m_OverrideForceAPI = -1;
         m_state.m_OverrideAdapterOrdinal = -1;
         m_state.m_OverrideOutput = -1;
-        m_state.m_OverrideForceVsync = -1;
+        m_state.m_OverrideForceVsync = 1;
         m_state.m_AutoChangeAdapter = true;
         m_state.m_ShowMsgBoxOnError = true;
         m_state.m_AllowShortcutKeysWhenWindowed = true;

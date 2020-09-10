@@ -18,17 +18,7 @@ public:
 public:
 	CGameObject * m_pParent = nullptr;
 	list<CGameObject*>  m_listChild;
-	void Destroy() {
-		for (auto iter : m_listChild)
-		{
-			iter->Destroy();
-			iter->m_pParent = nullptr;
-		}
-			m_listChild.clear();
-			if (m_pParent)
-				m_pParent->m_listChild.remove(this);
-		m_bDestroy = true;
-	}
+	void Destroy();
 
 	void AddChild(CGameObject * _Child)
 	{

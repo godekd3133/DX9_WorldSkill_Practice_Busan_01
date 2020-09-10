@@ -34,7 +34,7 @@ void CScheduleAdmin::Delay(float _fTime)
 {
 	m_Schedules.emplace(
 		[this, _fTime]()->bool {
-		m_fTime += dt;
+		m_fTime += udt;
 		if (m_fTime > _fTime)
 		{
 			m_fTime = 0.f;
@@ -48,7 +48,7 @@ void CScheduleAdmin::Update()
 {
 	if (!m_Schedules.empty())
 	{
-		m_fDurationTime += dt;
+		m_fDurationTime += udt;
 		if (m_Schedules.front().first() == false ||
 			(m_Schedules.front().second != 0.f &&m_fDurationTime > m_Schedules.front().second))
 		{

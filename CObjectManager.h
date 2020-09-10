@@ -17,6 +17,7 @@ private:
 	list<CCollider * > m_listCollider3D;
 
 public:
+	void Clear();
 	void Update();
 	void Render();
 	CGameObject* Create(string _Name = "go", Tag _Tag = Tag::Untagged);
@@ -27,6 +28,16 @@ public:
 	CGameObject * Find(Tag _Tag);
 	list <CGameObject * >Finds(string _Name);
 	list <CGameObject * >Finds(Tag _Tag);
+
+
+
+	list<CGameObject *> GetCollisionObject(Vector3 _vPos, float _Radius, Tag _Tag);
+	list<CGameObject *> GetCollisionObject(Vector3 _vPos, float _Radius);
+
+	list<CGameObject *> RayCast(Vector3 _vPos, Vector3 _vDir, float _fDist = -1.f);
+	list<CGameObject *> RayCast(Vector3 _vPos, Vector3 _vDir, Tag _TagMask, float _fDist = -1.f);
+
+	void SortByDistance(list<CGameObject*>& _listObject);
 };
 
 #define OBJ (*CObjectManager::GetInstance())

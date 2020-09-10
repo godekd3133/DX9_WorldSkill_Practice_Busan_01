@@ -44,7 +44,7 @@ void CAnimator3D::OnDestroy()
 {
 }
 
-void CAnimator3D::OnCollision()
+void CAnimator3D::OnCollision(CGameObject * _pObject)
 {
 }
 

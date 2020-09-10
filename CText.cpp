@@ -36,7 +36,7 @@ void CText::OnDestroy()
 {
 }
 
-void CText::OnCollision()
+void CText::OnCollision(CGameObject * _pObject)
 {
 }
 

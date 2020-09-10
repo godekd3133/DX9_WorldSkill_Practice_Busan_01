@@ -37,7 +37,7 @@ void CSpriteRenderer::OnDestroy()
 {
 }
 
-void CSpriteRenderer::OnCollision()
+void CSpriteRenderer::OnCollision(CGameObject * _pObject)
 {
 }
 

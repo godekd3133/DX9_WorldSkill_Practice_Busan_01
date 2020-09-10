@@ -46,9 +46,6 @@
     <Filter Include="002 : GAME\MainGame">
       <UniqueIdentifier>{824e91f1-47f5-46dd-bee4-72d7b5c7019e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="001 : ENGINE\Scene">
-      <UniqueIdentifier>{5ebb8e5e-47a8-437f-842e-1ced766c19f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="000 : BASE\Resource Files">
       <UniqueIdentifier>{8e114980-c1a3-4ada-ad7c-83caadf5daeb}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
@@ -89,32 +86,8 @@
     <Filter Include="001 : ENGINE\Component\Components\Collider">
       <UniqueIdentifier>{8a2a74f0-1d3f-4274-a326-8409e0fa50fa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="002 : GAME\Scene">
-      <UniqueIdentifier>{ae70718f-c8f5-454b-b4d5-daf77b5726a4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="002 : GAME\Scene\00 : LoadScene">
-      <UniqueIdentifier>{2ccedb30-2992-42d3-abee-55cf3e082756}</UniqueIdentifier>
-    </Filter>
     <Filter Include="001 : ENGINE\Component\Components\RigidBody">
       <UniqueIdentifier>{9bc5d224-640c-4239-bca5-f0fede422ead}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\00 : Title">
-      <UniqueIdentifier>{18a3f7e3-8018-46ad-99de-fdd2eefbfd66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\01 : Stage01">
-      <UniqueIdentifier>{5ebc1f99-bec1-4b3f-b94a-156d5452f84c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\02 : Stage02">
-      <UniqueIdentifier>{ba245029-0999-46b7-aed3-e87ab5f7a560}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\03 : StageClear">
-      <UniqueIdentifier>{04973c15-9c6f-4c0c-bbcd-d10cb0a2b3a6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\04 : GameOver">
-      <UniqueIdentifier>{e2a00696-e9c3-4f77-bf3f-48b5dfaaddcf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="001 : ENGINE\Scene\05 : GameClear">
-      <UniqueIdentifier>{e08de961-b28e-4a5d-a1e6-212264893311}</UniqueIdentifier>
     </Filter>
     <Filter Include="002 : GAME\Component">
       <UniqueIdentifier>{d22592d9-c339-47ec-a66e-6a11bdc50470}</UniqueIdentifier>
@@ -133,6 +106,30 @@
     </Filter>
     <Filter Include="002 : GAME\Component\Bullet">
       <UniqueIdentifier>{9f2a0f66-aaa1-4711-9ec1-138186b757f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene">
+      <UniqueIdentifier>{5ebb8e5e-47a8-437f-842e-1ced766c19f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\00 : Title">
+      <UniqueIdentifier>{18a3f7e3-8018-46ad-99de-fdd2eefbfd66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\01 : Stage01">
+      <UniqueIdentifier>{5ebc1f99-bec1-4b3f-b94a-156d5452f84c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\02 : Stage02">
+      <UniqueIdentifier>{ba245029-0999-46b7-aed3-e87ab5f7a560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\03 : StageClear">
+      <UniqueIdentifier>{04973c15-9c6f-4c0c-bbcd-d10cb0a2b3a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\04 : GameOver">
+      <UniqueIdentifier>{e2a00696-e9c3-4f77-bf3f-48b5dfaaddcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Scene\05 : GameClear">
+      <UniqueIdentifier>{e08de961-b28e-4a5d-a1e6-212264893311}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="002 : GAME\Component\Enemy\Enemys">
+      <UniqueIdentifier>{c1a34803-fd6e-4973-820f-644a90561eca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -232,7 +229,7 @@
       <Filter>001 : ENGINE\ScheduleAdmin</Filter>
     </ClCompile>
     <ClCompile Include="CScene.cpp">
-      <Filter>001 : ENGINE\Scene</Filter>
+      <Filter>002 : GAME\Scene</Filter>
     </ClCompile>
     <ClCompile Include="CAnimation2D.cpp">
       <Filter>001 : ENGINE\Component\Components\Animation\2D</Filter>
@@ -268,22 +265,22 @@
       <Filter>001 : ENGINE\Component\Components</Filter>
     </ClCompile>
     <ClCompile Include="CGameOver.cpp">
-      <Filter>001 : ENGINE\Scene\04 : GameOver</Filter>
+      <Filter>002 : GAME\Scene\04 : GameOver</Filter>
     </ClCompile>
     <ClCompile Include="CGameClear.cpp">
-      <Filter>001 : ENGINE\Scene\05 : GameClear</Filter>
+      <Filter>002 : GAME\Scene\05 : GameClear</Filter>
     </ClCompile>
     <ClCompile Include="CStage01.cpp">
-      <Filter>001 : ENGINE\Scene\01 : Stage01</Filter>
+      <Filter>002 : GAME\Scene\01 : Stage01</Filter>
     </ClCompile>
     <ClCompile Include="CStage02.cpp">
-      <Filter>001 : ENGINE\Scene\02 : Stage02</Filter>
+      <Filter>002 : GAME\Scene\02 : Stage02</Filter>
     </ClCompile>
     <ClCompile Include="CStageClear.cpp">
-      <Filter>001 : ENGINE\Scene\03 : StageClear</Filter>
+      <Filter>002 : GAME\Scene\03 : StageClear</Filter>
     </ClCompile>
     <ClCompile Include="CTitleScene.cpp">
-      <Filter>001 : ENGINE\Scene\00 : Title</Filter>
+      <Filter>002 : GAME\Scene\00 : Title</Filter>
     </ClCompile>
     <ClCompile Include="CRigidBody.cpp">
       <Filter>001 : ENGINE\Component\Components\RigidBody</Filter>
@@ -294,13 +291,19 @@
     <ClCompile Include="CPlayerMovement.cpp">
       <Filter>002 : GAME\Component\Player</Filter>
     </ClCompile>
-    <ClCompile Include="CScrollMap.cpp">
-      <Filter>002 : GAME\Component\Map</Filter>
-    </ClCompile>
     <ClCompile Include="CEffect.cpp">
       <Filter>002 : GAME\Component\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="CBullet.cpp" />
+    <ClCompile Include="CGameManager.cpp" />
+    <ClCompile Include="CPlayerUI.cpp" />
+    <ClCompile Include="CDamageFont.cpp" />
+    <ClCompile Include="CButton.cpp" />
+    <ClCompile Include="CItem.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKsound.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKwavefile.cpp" />
+    <ClCompile Include="CStageMap.cpp">
+      <Filter>002 : GAME\Component\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGraphicsManager.h">
@@ -340,7 +343,7 @@
       <Filter>001 : ENGINE\ScheduleAdmin</Filter>
     </ClInclude>
     <ClInclude Include="CScene.h">
-      <Filter>001 : ENGINE\Scene</Filter>
+      <Filter>002 : GAME\Scene</Filter>
     </ClInclude>
     <ClInclude Include="CSingleton.h">
       <Filter>001 : ENGINE\Manager</Filter>
@@ -379,22 +382,22 @@
       <Filter>001 : ENGINE\Component\Components</Filter>
     </ClInclude>
     <ClInclude Include="CGameOver.h">
-      <Filter>001 : ENGINE\Scene\04 : GameOver</Filter>
+      <Filter>002 : GAME\Scene\04 : GameOver</Filter>
     </ClInclude>
     <ClInclude Include="CGameClear.h">
-      <Filter>001 : ENGINE\Scene\05 : GameClear</Filter>
+      <Filter>002 : GAME\Scene\05 : GameClear</Filter>
     </ClInclude>
     <ClInclude Include="CStage01.h">
-      <Filter>001 : ENGINE\Scene\01 : Stage01</Filter>
+      <Filter>002 : GAME\Scene\01 : Stage01</Filter>
     </ClInclude>
     <ClInclude Include="CStage02.h">
-      <Filter>001 : ENGINE\Scene\02 : Stage02</Filter>
+      <Filter>002 : GAME\Scene\02 : Stage02</Filter>
     </ClInclude>
     <ClInclude Include="CStageClear.h">
-      <Filter>001 : ENGINE\Scene\03 : StageClear</Filter>
+      <Filter>002 : GAME\Scene\03 : StageClear</Filter>
     </ClInclude>
     <ClInclude Include="CTitleScene.h">
-      <Filter>001 : ENGINE\Scene\00 : Title</Filter>
+      <Filter>002 : GAME\Scene\00 : Title</Filter>
     </ClInclude>
     <ClInclude Include="CRigidBody.h">
       <Filter>001 : ENGINE\Component\Components\RigidBody</Filter>
@@ -405,13 +408,19 @@
     <ClInclude Include="CPlayerMovement.h">
       <Filter>002 : GAME\Component\Player</Filter>
     </ClInclude>
-    <ClInclude Include="CScrollMap.h">
-      <Filter>002 : GAME\Component\Map</Filter>
-    </ClInclude>
     <ClInclude Include="CEffect.h">
       <Filter>002 : GAME\Component\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="CBullet.h" />
+    <ClInclude Include="CGameManager.h" />
+    <ClInclude Include="CPlayerUI.h" />
+    <ClInclude Include="CDamageFont.h" />
+    <ClInclude Include="CButton.h" />
+    <ClInclude Include="CItem.h" />
+    <ClInclude Include="DXUT\Optional\SDKsound.h" />
+    <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
+    <ClInclude Include="CStageMap.h">
+      <Filter>002 : GAME\Component\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

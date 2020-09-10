@@ -13,13 +13,13 @@ public:
 	int m_iMaxFrame;
 	int m_iCurFrame;
 	string m_Name;
+	bool m_bEnable;
 private:	
 	CMeshRenderer * MeshRenderer;
 
 	bool m_bRepeat;
 	float m_fDelay;
 	float m_fTime = 0.f; 
-	bool m_bEnable;
 
 	map<int, list<Event>> m_mapEvent;
 

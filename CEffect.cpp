@@ -35,7 +35,7 @@ void CEffect::OnDestroy()
 {
 }
 
-void CEffect::OnCollision()
+void CEffect::OnCollision(CGameObject * _pObject)
 {
 }
 

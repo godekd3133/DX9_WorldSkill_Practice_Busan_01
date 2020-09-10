@@ -13,9 +13,10 @@ public:
 	virtual void Update() override;
 	virtual void LateUpdate() override;
 	virtual void OnDestroy() override;
-	virtual void OnCollision() override;
+	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
 	void Init(string _ResKey, float _Delay, Vector3 _vPos);
 };
 
+#define EFFECT(Pos,Scale,resKey) CGameObject * Effect= OBJ.Create(); Effect->tf->m_vScale = Scale; Effect->ac<CEffect>()->Init(resKey,0.05f,Pos);

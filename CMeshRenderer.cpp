@@ -36,7 +36,7 @@ void CMeshRenderer::OnDestroy()
 {
 }
 
-void CMeshRenderer::OnCollision()
+void CMeshRenderer::OnCollision(CGameObject * _pObject)
 {
 }
 

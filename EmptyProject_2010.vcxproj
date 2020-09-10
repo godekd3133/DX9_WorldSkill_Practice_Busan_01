@@ -113,7 +113,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|X64'">
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
-    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x64;$(DXSDK_DIR)Utilities\bin\x86;$(ExecutablePath)</ExecutablePath>
+    <ExecutablePath>$(DXSDK_DIR)Utilities\bin\x64;$(DXSDK_DIR)Utilities\bin\x64;$(ExecutablePath)</ExecutablePath>
     <IncludePath>$(DXSDK_DIR)Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
@@ -275,6 +275,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>DXUT.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <AdditionalOptions> %(AdditionalOptions)</AdditionalOptions>
@@ -393,59 +394,71 @@
     <ClCompile Include="CAnimation3D.cpp" />
     <ClCompile Include="CAnimator2D.cpp" />
     <ClCompile Include="CAnimator3D.cpp" />
-    <ClCompile Include="CBullet.cpp" />
+    <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCollider.cpp" />
+    <ClCompile Include="CDamageFont.cpp" />
     <ClCompile Include="CEffect.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CGameClear.cpp" />
+    <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameOver.cpp" />
+    <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CMeshRenderer.cpp" />
     <ClCompile Include="CPlayerMovement.cpp" />
+    <ClCompile Include="CPlayerUI.cpp" />
     <ClCompile Include="CRenderer2D.cpp" />
     <ClCompile Include="CRenderer3D.cpp" />
     <ClCompile Include="CRigidBody.cpp" />
-    <ClCompile Include="CScrollMap.cpp" />
     <ClCompile Include="CSprite.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
     <ClCompile Include="CStage01.cpp" />
     <ClCompile Include="CStage02.cpp" />
     <ClCompile Include="CStageClear.cpp" />
+    <ClCompile Include="CStageMap.cpp" />
     <ClCompile Include="CText.cpp" />
     <ClCompile Include="CTitleScene.cpp" />
     <ClCompile Include="CTransform.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKsound.cpp" />
+    <ClCompile Include="DXUT\Optional\SDKwavefile.cpp" />
     <ClCompile Include="MeshLoader.cpp" />
     <ClInclude Include="CAnimation2D.h" />
     <ClInclude Include="CAnimation3D.h" />
     <ClInclude Include="CAnimator2D.h" />
     <ClInclude Include="CAnimator3D.h" />
-    <ClInclude Include="CBullet.h" />
+    <ClInclude Include="CButton.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CCollider.h" />
+    <ClInclude Include="CDamageFont.h" />
     <ClInclude Include="CEffect.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CGameClear.h" />
+    <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameOver.h" />
     <ClInclude Include="CGraphicsManager.h" />
     <ClInclude Include="CInputManager.h" />
+    <ClInclude Include="CItem.h" />
     <ClInclude Include="CMeshRenderer.h" />
     <ClInclude Include="CObjectManager.h" />
     <ClInclude Include="CPlayerMovement.h" />
+    <ClInclude Include="CPlayerUI.h" />
     <ClInclude Include="CRenderer2D.h" />
     <ClInclude Include="CRenderer3D.h" />
     <ClInclude Include="CRigidBody.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneManager.h" />
     <ClInclude Include="CScheduleAdmin.h" />
-    <ClInclude Include="CScrollMap.h" />
     <ClInclude Include="CSingleton.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CSpriteRenderer.h" />
     <ClInclude Include="CStage01.h" />
     <ClInclude Include="CStage02.h" />
     <ClInclude Include="CStageClear.h" />
+    <ClInclude Include="CStageMap.h" />
     <ClInclude Include="CText.h" />
     <ClInclude Include="CTitleScene.h" />
     <ClInclude Include="CTransform.h" />
+    <ClInclude Include="DXUT\Optional\SDKsound.h" />
+    <ClInclude Include="DXUT\Optional\SDKwavefile.h" />
     <ClInclude Include="MeshLoader.h" />
     <ClInclude Include="stdafx.h" />
     <None Include="DXUT\Optional\directx.ico" />

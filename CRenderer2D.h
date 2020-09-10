@@ -14,7 +14,7 @@ public:
 	virtual void LateUpdate() PURE;
 	virtual void OnRender() PURE;
 	virtual void OnDestroy() PURE;
-	virtual void OnCollision() PURE;
+	virtual void OnCollision(CGameObject * _pObject) PURE;
 
 public:
 	Color m_Color;

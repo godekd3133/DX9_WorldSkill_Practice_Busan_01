@@ -1,5 +1,11 @@
 #pragma once
 #include "CComponent.h"
+
+enum class Enemy_State
+{
+	IDLE, CHASE, ATTACK_PREPARE ,ATTACK
+};
+
 class CEnemy :
 	public CComponent
 {
@@ -13,14 +19,8 @@ public:
 	virtual void Update() override;
 	virtual void LateUpdate() override;
 	virtual void OnDestroy() override;
-	virtual void OnCollision() override;
+	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
-	int m_iCurHp;
-	int m_iMaxHp;
-
-	void OnHit(int _Damage);
-
-
 };
 
