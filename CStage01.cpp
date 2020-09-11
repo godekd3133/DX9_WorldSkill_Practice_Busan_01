@@ -34,7 +34,7 @@ void CStage01::Update()
 
 void CStage01::Render()
 {
-	GRAPHICS.Render_Font(to_string(GAME.m_pPlayer->tf->GetRotation().y), GRAPHICS.ToMatrix(Vector3(100, 100, 0)), Color(1, 1, 1, 1), RenderMode::RM_UI);
+	GRAPHICS.Render_Font(to_string(DXUTGetFPS()), GRAPHICS.ToMatrix(Vector3(100, 100, 0)), Color(1, 1, 1, 1), RenderMode::RM_UI);
 }
 
 void CStage01::Release()

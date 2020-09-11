@@ -65,7 +65,7 @@ void CPlayerMovement::Update()
 			pTrail->ac<CMeshRenderer>()->Init(gc<CMeshRenderer>()->m_pMesh);
 			pTrail->gc<CMeshRenderer>()->sa->Add(
 				[=]()->bool {
-				return pTrail->gc<CMeshRenderer>()->LerpColor(Color(1.f, 1.f, 1.f, 0.f), dt * 2);
+				return pTrail->gc<CMeshRenderer>()->LerpColor(Color(1.f, 1.f, 1.f, 0.f), dt / 2);
 			});
 
 			pTrail->gc<CMeshRenderer>()->sa->Add(
@@ -75,6 +75,12 @@ void CPlayerMovement::Update()
 		}
 	}
 	else m_vVelocity = Vector3(0, 0, 0);
+
+	if (INPUT.KeyDown('1'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CEnemy01>()->Init(tf->m_vPos );
+	}
 
 }
 

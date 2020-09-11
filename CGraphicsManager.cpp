@@ -1,4 +1,4 @@
-#include "DXUT.h"
+﻿#include "DXUT.h"
 #include "CGraphicsManager.h"
 
 
@@ -206,8 +206,6 @@ void CGraphicsManager::Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vecto
 
 void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color)
 {
-
-
 	if (_pMesh)
 	{
 		g_Device->SetTransform(D3DTS_WORLD, &_matWorld);
@@ -219,18 +217,31 @@ void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Colo
 			g_Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true); 
 			g_Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 			g_Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+			//g_Device->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
+			g_Device->SetRenderState(D3DRENDERSTATETYPE::D3DRS_ALPHATESTENABLE, true);
+			g_Device->SetRenderState(D3DRENDERSTATETYPE::D3DRS_ALPHAREF, 0x00000088);
+			g_Device->SetRenderState(D3DRENDERSTATETYPE::D3DRS_ALPHAFUNC,D3DCMP_GREATER);
+
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TFACTOR);
+
+		
 			g_Device->SetRenderState(D3DRS_TEXTUREFACTOR, D3DXCOLOR(_Color));
 
 			g_Device->SetMaterial(&_pMesh->m_vecMaterial[i]->material);
 			g_Device->SetTexture(0, _pMesh->m_vecMaterial[i]->pTexture);
 			_pMesh->m_pMesh->DrawSubset(i);
 		}
+		Matrix iden;//RenderEnd
+	//	g_Device->SetRenderState(D3DRS_ALPHAREF, 0);
+	//	g_Device->SetRenderState(D3DRS_ALPHAFUNC, FALSE); ​
+		g_Device->SetRenderState(D3DRENDERSTATETYPE::D3DRS_ALPHAREF, 0);
+		g_Device->SetRenderState(D3DRENDERSTATETYPE::D3DRS_ALPHAFUNC, FALSE);
+		//g_Device->SetRenderState(D3DRS_ALPHAREF, 0);
+		//g_Device->SetRenderState(D3DRS_ALPHAFUNC, FALSE); ​
 
-
-		Matrix iden;
 		D3DXMatrixIdentity(&iden);
 		g_Device->SetTransform(D3DTS_WORLD, &iden);
 	}

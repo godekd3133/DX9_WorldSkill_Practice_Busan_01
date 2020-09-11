@@ -162,6 +162,7 @@ enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "CDamageFont.h"
 #include "CPlayerBullet.h"
 #include "CEnemy.h"
+#include "CEnemy01.h"
 
  
 #include "CButton.h"

@@ -66,6 +66,9 @@ void CMainGame::Init()
 
 		AddMesh("PLAYER_BULLET", "bullet","");
 
+		AddSprite("EFFECT_EXPLOSION", "Effect/Explosion/Explosion",8);//21);
+
+
 		//AddMesh("MAP_STAGE02_1", "Map/2-1Stage/2stageRemake1", "Map/2-1Stage", 1);//21);
 		//AddMesh("MAP_STAGE02_2", "Map/2-1Stage/2stageRemake1", "Map/2-1Stage", 1);//21);
 		//AddMesh("MAP_STAGE02_3", "Map/2-1Stage/2stageRemake1", "Map/2-1Stage", 1);//21);
@@ -82,9 +85,9 @@ void CMainGame::Init()
 		AddMesh("PLAYER_RIFLE_SKILL", "Player/Rifle/Skill/Skill", "Player", 1);//26);
 		AddMesh("PLAYER_RIFLE_WALK", "Player/Rifle/Walk/Walk", "Player", 1);//21);
 
-		//AddMesh("ENEMY_01_IDLE", "monster1/Idle/Idle", "monster1",					1);//61);
-		//AddMesh("ENEMY_01_WALK", "monster1/Walk/Walk", "monster1",					1);//31);
-		//AddMesh("ENEMY_01_ATTACK", "monster1/att1/Attack", "monster1",				1);//26);
+		AddMesh("ENEMY_01_IDLE", "monster1/Idle/Idle", "monster1",					1);//61);
+		AddMesh("ENEMY_01_WALK", "monster1/Walk/Walk", "monster1",					1);//31);
+		AddMesh("ENEMY_01_ATTACK", "monster1/att1/Attack", "monster1",				1);//26);
 		//
 		//AddMesh("ENEMY_02_IDLE", "monster2/Idle/Idle", "monster2",					1);//41);
 		//AddMesh("ENEMY_02_WALK", "monster2/Walk/Walk", "monster2",					1);//41);

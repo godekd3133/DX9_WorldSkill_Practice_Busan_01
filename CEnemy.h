@@ -22,5 +22,13 @@ public:
 	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
+
+	void Init(CMesh * _pMesh , int _Hp, int _Size);
+
+private:
+	int m_iMaxHp;
+	int m_iCurHp;
+
+
 };
 

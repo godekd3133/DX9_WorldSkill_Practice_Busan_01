@@ -305,6 +305,9 @@
       <Filter>002 : GAME\Component\Map</Filter>
     </ClCompile>
     <ClCompile Include="CPlayerBullet.cpp" />
+    <ClCompile Include="CEnemy01.cpp">
+      <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGraphicsManager.h">
@@ -423,6 +426,9 @@
       <Filter>002 : GAME\Component\Map</Filter>
     </ClInclude>
     <ClInclude Include="CPlayerBullet.h" />
+    <ClInclude Include="CEnemy01.h">
+      <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

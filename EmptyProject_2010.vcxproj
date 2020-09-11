@@ -31,7 +31,7 @@
     <ProjectGuid>{D3D09108-96D0-4629-88B8-122C0256058C}</ProjectGuid>
     <RootNamespace>EmptyProject</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -399,6 +399,7 @@
     <ClCompile Include="CDamageFont.cpp" />
     <ClCompile Include="CEffect.cpp" />
     <ClCompile Include="CEnemy.cpp" />
+    <ClCompile Include="CEnemy01.cpp" />
     <ClCompile Include="CGameClear.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameOver.cpp" />
@@ -432,6 +433,7 @@
     <ClInclude Include="CDamageFont.h" />
     <ClInclude Include="CEffect.h" />
     <ClInclude Include="CEnemy.h" />
+    <ClInclude Include="CEnemy01.h" />
     <ClInclude Include="CGameClear.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameOver.h" />
