@@ -111,8 +111,8 @@ HRESULT CMeshLoader::Create(IDirect3DDevice9* pd3dDevice, const WCHAR* strFilena
 					string Path;
 					Path.assign(wPath.begin(), wPath.end());
 
-					GRAPHICS.AddSprite(_mapPath + Path, _mapPath + Path );
-					pMaterial->pTexture = SPRITE(_mapPath + Path)->m_pTexture;
+					GRAPHICS.AddSprite(Path, _mapPath + Path );
+					pMaterial->pTexture = SPRITE(  Path)->m_pTexture;
 				}
 
 			}

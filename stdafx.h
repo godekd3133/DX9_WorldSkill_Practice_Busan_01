@@ -18,11 +18,25 @@ using namespace std;
 
 const INT WINSIZEX = 1920;
 const INT WINSIZEY = 1080;
-const bool WINDOWED = FALSE;
+const bool WINDOWED = true;
 
 #define g_Device DXUTGetD3D9Device()
 #define dt DXUTGetElapsedTime() * INPUT.TimeScale
 #define udt  DXUTGetElapsedTime()
+#define SCREEN_CENTER Vector2(WINSIZEX/2.F, WINSIZEY/2.f)
+#define VEC3_UP Vector3(0,1,0)
+#define VEC3_DOWN Vector3(0,-1,0)
+#define VEC3_LEFT Vector3(-1,0,0)
+#define VEC3_RIGHT Vector3(1,0,0)
+#define VEC3_FRONT Vector3(0,0,1)
+#define VEC3_BACK Vector3(0,0,-1)
+
+#define VEC2_UP Vector2(0,-1)
+#define VEC2_DOWN Vector2(0,1)
+#define VEC2_LEFT Vector2(-1,0)
+#define VEC2_RIGHT Vector2(1,0)
+
+
 
 using Vector2 = D3DXVECTOR2;
 using Vector3 = D3DXVECTOR3;
@@ -65,13 +79,22 @@ namespace my
 
 		D3DXVec3TransformNormal(&vDir, &vDir, &matRot);
 
-		return Vector3(vDir.x, 0.f, vDir.y);
+		return Vector3(vDir.x, 0.f, vDir.z);
 	}
 	static float GetDirAngle(Vector2 _vDir)
 	{
 		float angle = atan2f(_vDir.y, _vDir.x);
 
 		return D3DXToDegree(angle);
+	}
+	static Vector3 GetDirectionFromQuaternion(Quaternion _Quat)
+	{
+		Matrix matRot;
+		D3DXMatrixRotationQuaternion(&matRot, &_Quat);
+
+		Vector3 vRot = Vector3(0, 0, 1);
+		D3DXVec3TransformNormal(&vRot, &vRot, &matRot);
+		return vRot;
 	}
 	static float GetDirAngle(Vector3 _vDir)
 	{
@@ -137,7 +160,7 @@ enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "CCollider.h"
 #include "CPlayerMovement.h"
 #include "CDamageFont.h"
-
+#include "CPlayerBullet.h"
 #include "CEnemy.h"
 
  

@@ -15,6 +15,8 @@ public:
 	CGameObject * m_pPlayer = nullptr;
 	CStageMap * m_pMap = nullptr;
 
+	float MoveSpeed = 3;
+private:
 };
 
 #define GAME (*CGameManager::GetInstance())

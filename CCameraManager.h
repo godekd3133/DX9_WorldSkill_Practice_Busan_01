@@ -28,11 +28,11 @@ public:
 	Matrix m_matProj;
 
 	Vector3 m_vShakePos;
-	Vector2 m_vRotation = Vector2(0,0);
+	Vector2 m_vRotation = Vector2(20,0);
 	Vector3 m_vOffset = Vector3(0, 0, 0);
 	float m_fCameraTime;
 	float m_fShakePower;
-	float m_fSensitivity = 50.f;
+	float m_fSensitivity = 10.f;
 public:
 	void Update();
 	void SetTransform();

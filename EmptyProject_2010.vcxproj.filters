@@ -304,6 +304,7 @@
     <ClCompile Include="CStageMap.cpp">
       <Filter>002 : GAME\Component\Map</Filter>
     </ClCompile>
+    <ClCompile Include="CPlayerBullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGraphicsManager.h">
@@ -421,6 +422,7 @@
     <ClInclude Include="CStageMap.h">
       <Filter>002 : GAME\Component\Map</Filter>
     </ClInclude>
+    <ClInclude Include="CPlayerBullet.h" />
   </ItemGroup>
   <ItemGroup>
     <CLInclude Include="resource.h">

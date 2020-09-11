@@ -404,6 +404,7 @@
     <ClCompile Include="CGameOver.cpp" />
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CMeshRenderer.cpp" />
+    <ClCompile Include="CPlayerBullet.cpp" />
     <ClCompile Include="CPlayerMovement.cpp" />
     <ClCompile Include="CPlayerUI.cpp" />
     <ClCompile Include="CRenderer2D.cpp" />
@@ -439,6 +440,7 @@
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CMeshRenderer.h" />
     <ClInclude Include="CObjectManager.h" />
+    <ClInclude Include="CPlayerBullet.h" />
     <ClInclude Include="CPlayerMovement.h" />
     <ClInclude Include="CPlayerUI.h" />
     <ClInclude Include="CRenderer2D.h" />

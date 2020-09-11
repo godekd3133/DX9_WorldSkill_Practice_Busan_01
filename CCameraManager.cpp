@@ -36,11 +36,11 @@ void CCameraManager::Update()
 	{
 		if (m_bScrolling)
 		{
-			m_vLookAt = m_pFollowObject->tf->m_vPos + Vector3(0, 300, 0);
+			m_vLookAt = m_pFollowObject->tf->m_vPos + Vector3(0, 2.5f, 0);
 			Vector2 dtPos = INPUT.GetDeltaMousePos();
 
 			m_vRotation.y += dtPos.x * dt * m_fSensitivity;
-			m_vRotation.x += dtPos.y * dt * m_fSensitivity;
+		//	m_vRotation.x += dtPos.y * dt * m_fSensitivity;
 		}
 		Matrix matRot, matRotX, matRotY;
 		D3DXMatrixRotationY(&matRotY, D3DXToRadian(m_vRotation.y));

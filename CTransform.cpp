@@ -54,8 +54,9 @@ Vector3 CTransform::GetRotation()
 	Vector3 vRot;
 
 	D3DXQuaternionToAxisAngle(&m_quatRotation, &Vector3(1, 0, 0), &vRot.x);
-	D3DXQuaternionToAxisAngle(&m_quatRotation, &Vector3(0, 1, 0), &vRot.y);
+	D3DXQuaternionToAxisAngle(&m_quatRotation, &Vector3(0, -1, 0), &vRot.y);
 	D3DXQuaternionToAxisAngle(&m_quatRotation, &Vector3(0, 0, 1), &vRot.z);
+
 
 	vRot.x = D3DXToDegree(vRot.x);
 	vRot.y = D3DXToDegree(vRot.y);

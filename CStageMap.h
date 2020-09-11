@@ -3,10 +3,8 @@
 
 enum MapCollision
 {
-	FirstFloor,
+	Floor,
 	Wall,
-	Between,
-	SecondFloor
 };
 
 struct CollisionInfo
@@ -32,13 +30,11 @@ public:
 private:
 	CGameObject * m_pPlayer = nullptr;
 public:
-	CMesh * m_pMesh = nullptr;
+	list<CMesh *> m_listMesh;
 	CSprite * m_pMinimap = nullptr;
 	CSprite * m_pCollisionMap = nullptr;
-	void Init(CMesh * _pMesh, CSprite * _pMinimap, CSprite * _pCollisionMap);
+	void Init(list<CMesh *> _listMesh, CSprite * _pMinimap, CSprite * _pCollisionMap);
 	MapCollision GetCollisionInfoByCollisionMap(Vector3 _vPos);
-	bool GetCollisionInfoByRay(Vector3 _vPos, Vector3 _vDir, float _Dist, CollisionInfo& Info);
 
-	float GetFloorY(Vector3 _vPos);
 };
 
