@@ -93,6 +93,17 @@ void CEnemy::Hit(int _Damage)
 {
 	if (m_bIsDead == false)
 	{
+		gc<CMeshRenderer>()->sa->Add(
+			[=]()->bool {
+			return gc<CMeshRenderer>()->LerpColor(Color(1, 0, 0, 1), 18 * dt);
+		});
+			gc<CMeshRenderer>()->sa->Add(
+				[=]()->bool {
+			return gc<CMeshRenderer>()->LerpColor(Color(1, 1 ,1, 1), 18 * dt);
+		}
+
+
+		);
 		m_iCurHp -= _Damage;
 		if (m_iCurHp <= 0)
 		{
