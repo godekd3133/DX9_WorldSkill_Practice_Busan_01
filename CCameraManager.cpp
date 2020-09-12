@@ -65,6 +65,26 @@ void CCameraManager::Update()
 	D3DXMatrixPerspectiveFovLH(&m_matProj, D3DX_PI / 4.f, 16.f / 9.f, 1.f, 1000000);
 }
 
+Vector3 CCameraManager::GetFinalPos()
+{
+	Vector3 Offset = m_vOffset;
+
+	Matrix matRot, matRotX, matRotY;
+	D3DXMatrixRotationY(&matRotY, D3DXToRadian(m_vRotation.y));
+	D3DXMatrixRotationX(&matRotX, D3DXToRadian(m_vRotation.x));
+	D3DXVec3TransformNormal(&m_vFoward, &Vector3(0, 0, 1), &(matRotX* matRotY));
+	D3DXVec3TransformCoord(&Offset, &Offset, &(matRotX* matRotY));
+
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::Foward], &Vector3(0, 0, 1), &(matRotY));
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::Back], &Vector3(0, 0, -1), &(matRotY));
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::Right], &Vector3(1, 0, 0), &(matRotY));
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::Left], &Vector3(-1, 0, 0), &(matRotY));
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::LF], &Vector3(-0.5, 0, 0.5), &(matRotY));
+	D3DXVec3TransformNormal(&m_vCharactorAxis[Axis::RF], &Vector3(0.5, 0, 0.5), &(matRotY));
+
+	return m_vLookAt - m_vFoward * m_fDistance + Offset;
+}
+
 void CCameraManager::SetTransform()
 {
 	g_Device->SetTransform(D3DTS_PROJECTION, &m_matProj);

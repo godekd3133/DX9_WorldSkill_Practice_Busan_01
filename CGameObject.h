@@ -27,6 +27,8 @@ public:
 	}
 public:
 	list <CComponent*> m_listComponent;
+	
+
 
 	template<class T>
 	T * gc()
@@ -60,3 +62,8 @@ public:
 public:
 };
 
+#define Animation_SetState(StateKey) gc<CAnimator3D>()->SetCurrentState(StateKey)
+
+#define Animation_GetNormalizeTime  gc<CAnimator3D>()->GetCurrentState()->GetNormalizeTime()
+ 
+#define Animation_GetCurrentStateName  gc<CAnimator3D>()->GetCurrentState()->m_Name

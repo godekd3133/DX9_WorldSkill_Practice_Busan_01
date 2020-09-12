@@ -112,7 +112,7 @@ bool CTransform::LerpScale(Vector3 _vTarget, float _fTime)
 {
 	m_vScale = Lerp(m_vScale, _vTarget, _fTime);
 
-	if (my::GetLength(m_vScale, _vTarget) < 0.1f)
+	if (my::GetLength(m_vScale, _vTarget) < 0.005f)
 		return false;
 
 	return true;

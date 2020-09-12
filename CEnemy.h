@@ -1,9 +1,13 @@
 #pragma once
 #include "CComponent.h"
 
-enum class Enemy_State
+enum class ENEMY_STATE
 {
-	IDLE, CHASE, ATTACK_PREPARE ,ATTACK
+	IDLE,
+	WALK,
+	CHASE,
+	ATTACK_PREPARE,
+	ATTACK
 };
 
 class CEnemy :
@@ -22,13 +26,24 @@ public:
 	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
-
-	void Init(CMesh * _pMesh , int _Hp, int _Size);
-
-private:
+	void Init(CMesh * _pMesh , int _Hp, int _Size, float _FindRange, float _AttackRange, float _MoveSpeed);
+	void Hit(int _Damage);
+	void Move(Vector3 _vDirection, float _MoveSpeed);
+	void OnDead();
+public:
 	int m_iMaxHp;
 	int m_iCurHp;
+	float m_fFindRange;
+	float m_fAttackRange;
+	float m_fMoveSpeed ;
+	bool m_bVaccine = false;
+	bool m_bIsDead = true;
 
 
+
+	ENEMY_STATE m_State;
+
+public:
+	CGameObject * m_pTarget = nullptr;
 };
 

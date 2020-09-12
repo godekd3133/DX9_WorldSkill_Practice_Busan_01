@@ -18,12 +18,12 @@ private:
 
 private:
 	map<string, CSprite * > m_mapSprite;
-	map<string, CMesh * > m_mapMesh;
 	map<string, CSound *> m_mapSound;
 
 
 
 public:
+	map<string, CMesh * > m_mapMesh;
 	CSprite * FindSprite(string _Key);
 	CMesh * FindMesh(string _Key);
 

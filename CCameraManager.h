@@ -35,6 +35,7 @@ public:
 	float m_fSensitivity = 10.f;
 public:
 	void Update();
+	Vector3 GetFinalPos();
 	void SetTransform();
 	CGameObject * m_pFollowObject = nullptr;
 	float m_fDistance = 0.f;

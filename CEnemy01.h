@@ -1,5 +1,7 @@
 #pragma once
 #include "CComponent.h"
+
+
 class CEnemy01 :
 	public CComponent
 {
@@ -17,7 +19,11 @@ public:
 
 public:
 	void Init(Vector3 _vPos);
+
 private:
 	CEnemy * m_pEnemy = nullptr;
+
+private:
+
 };
 

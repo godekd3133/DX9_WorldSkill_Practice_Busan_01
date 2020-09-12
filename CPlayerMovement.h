@@ -16,14 +16,14 @@ public:
 	virtual void OnCollision(CGameObject * _pObject) override;
 
 	void Move(Vector3 _vDirection, float _MoveSpeed, bool _WithRotation);
-
+	string GetAnimationStateByWeapon();
 
 	Vector3 GetPlayerMoveDirectionFromInput();
 	void FirePlayerBullet();
 
 public:
 	bool m_bFixPlayerRotation = false;
-
+	int m_iWeaponMode = 0;
 	float m_fTime = 0.f;
 	float m_fDashTime = 0.f;
 	Vector3 m_vVelocity = Vector3(0, 0, 0);

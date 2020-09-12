@@ -28,8 +28,19 @@ void CStage01::Init()
 
 void CStage01::Update()
 {
-
-
+	float distance = CAMERA.m_fDistance;
+	if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Wall)
+	{
+		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 0.f, dt * 2);
+		if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Floor)
+			CAMERA.m_fDistance = distance;
+	}
+	else
+	{
+		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 6.f, dt *2 );
+		if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Wall)
+			CAMERA.m_fDistance = distance;
+	}
 }
 
 void CStage01::Render()
