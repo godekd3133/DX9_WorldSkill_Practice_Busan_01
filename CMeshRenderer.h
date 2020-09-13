@@ -18,7 +18,7 @@ public:
 	
 public:
 	CMesh * m_pMesh;
-
+	CSprite * m_pMappingOverride = nullptr;
 public:
 	void Init(CMesh * _pMesh, Color _Color = Color(1,1,1,1));
 };

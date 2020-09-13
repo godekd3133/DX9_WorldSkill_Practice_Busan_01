@@ -163,6 +163,8 @@ enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "CPlayerBullet.h"
 #include "CEnemy.h"
 #include "CEnemy01.h"
+#include "CEnemy02.h"
+#include "CEnemy03.h"
 
  
 #include "CButton.h"

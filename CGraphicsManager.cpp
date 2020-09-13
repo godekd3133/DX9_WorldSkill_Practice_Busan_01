@@ -36,7 +36,7 @@ CGraphicsManager::~CGraphicsManager()
 
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pFont);
-}
+} 
 
 CSprite * CGraphicsManager::FindSprite(string _Key)
 {
@@ -204,7 +204,39 @@ void CGraphicsManager::Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vecto
 	g_Device->SetRenderState(D3DRS_ZENABLE, true);
 }
 
-void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color)
+//void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color)
+//{
+//	if (_pMesh)
+//	{
+//		g_Device->SetTransform(D3DTS_WORLD, &_matWorld);
+//
+//		for (int i = 0; i < _pMesh->m_vecMaterial.size(); i++)
+//		{
+//			_pMesh->m_vecMaterial[i]->material.Emissive = D3DXCOLOR(_Color);
+//
+//			g_Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true); 
+//			g_Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+//			g_Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+//
+//			g_Device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+//			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
+//			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TFACTOR);
+//
+//		
+//			g_Device->SetRenderState(D3DRS_TEXTUREFACTOR, D3DXCOLOR(_Color));
+//
+//			g_Device->SetMaterial(&_pMesh->m_vecMaterial[i]->material);
+//			g_Device->SetTexture(0, _pMesh->m_vecMaterial[i]->pTexture);
+//			_pMesh->m_pMesh->DrawSubset(i);
+//		}
+//		Matrix iden;
+//		D3DXMatrixIdentity(&iden);
+//		g_Device->SetTransform(D3DTS_WORLD, &iden);
+//		g_Device->SetTexture(0, nullptr);
+//	}
+//}
+
+void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color, CSprite * _pOverride)
 {
 	if (_pMesh)
 	{
@@ -212,26 +244,33 @@ void CGraphicsManager::Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Colo
 
 		for (int i = 0; i < _pMesh->m_vecMaterial.size(); i++)
 		{
+			//LPDIRECT3DTEXTURE9  a = _pMesh->m_vecMaterial[i]->pTexture;
+			//_pMesh->m_vecMaterial[i]->pTexture = _pOverride->m_pTexture;
 			_pMesh->m_vecMaterial[i]->material.Emissive = D3DXCOLOR(_Color);
-
-			g_Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true); 
+			
+			g_Device->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 			g_Device->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 			g_Device->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
-
+			
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG1, D3DTA_TEXTURE);
 			g_Device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_TFACTOR);
-
-		
+			
+			
 			g_Device->SetRenderState(D3DRS_TEXTUREFACTOR, D3DXCOLOR(_Color));
-
+			
 			g_Device->SetMaterial(&_pMesh->m_vecMaterial[i]->material);
-			g_Device->SetTexture(0, _pMesh->m_vecMaterial[i]->pTexture);
+			if (_pOverride != nullptr)
+				g_Device->SetTexture(0, _pOverride->m_pTexture);
+			else
+				g_Device->SetTexture(0, _pMesh->m_vecMaterial[i]->pTexture);
+
 			_pMesh->m_pMesh->DrawSubset(i);
 		}
 		Matrix iden;
 		D3DXMatrixIdentity(&iden);
 		g_Device->SetTransform(D3DTS_WORLD, &iden);
+//		g_Device->SetTexture(0, nullptr);
 	}
 }
 

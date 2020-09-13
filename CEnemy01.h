@@ -19,6 +19,8 @@ public:
 
 public:
 	void Init(Vector3 _vPos);
+	void OnAttack();
+	void OnDead();
 
 private:
 	CEnemy * m_pEnemy = nullptr;

@@ -70,15 +70,11 @@ void CDamageFont::Init(string _Key, Vector3 _vPos, int _Damage)
 	}
 
 	Vector3 Scale = tf->m_vScale;
+	tf->m_vScale = Scale * 3;
+
 	sa->Add(
 		[=]()->bool {
-		tf->m_vScale = Lerp(tf->m_vScale, Scale*2, dt *24);
-		return true; 
-	}, 0.25f
-	);
-	sa->Add(
-		[=]()->bool {
-		tf->m_vScale = Lerp(tf->m_vScale, Scale, dt * 24);
+		tf->m_vScale = Lerp(tf->m_vScale, Scale, dt * 16);
 		return true;
 	}, 0.25f
 	);

@@ -13,6 +13,7 @@ CStage01::~CStage01()
 
 void CStage01::Init()
 {
+	GAME.Timer = 180;
 	CGameObject * Map = OBJ.Create("Map", Tag::Map);
 	list<CMesh*> listMap;
 	listMap.push_back(MESH("MAP_STAGE01"));
@@ -24,20 +25,23 @@ void CStage01::Init()
 	Player->tf->m_vPos = Vector3(-5, 0, 5);
 	GAME.m_pPlayer = Player;
 
+	CGameObject * PlayerUI = OBJ.Create();
+	PlayerUI->ac<CPlayerUI>();
 }
 
 void CStage01::Update()
 {
+	GAME.Timer -= dt;
 	float distance = CAMERA.m_fDistance;
 	if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Wall)
 	{
-		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 0.f, dt * 2);
+		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 0.f, dt * 8);
 		if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Floor)
 			CAMERA.m_fDistance = distance;
 	}
 	else
 	{
-		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 6.f, dt *2 );
+		CAMERA.m_fDistance = Lerp(CAMERA.m_fDistance, 6.f, dt *8);
 		if (GAME.m_pMap->GetCollisionInfoByCollisionMap(CAMERA.GetFinalPos()) == MapCollision::Wall)
 			CAMERA.m_fDistance = distance;
 	}

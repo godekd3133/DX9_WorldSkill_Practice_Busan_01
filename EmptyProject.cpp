@@ -140,7 +140,7 @@ INT WINAPI wWinMain( HINSTANCE, HINSTANCE, LPWSTR, int )
 
     // Initialize DXUT and create the desired Win32 window and Direct3D device for the application
     DXUTInit( true, true ); // Parse the command line and show msgboxes
-    DXUTSetHotkeyHandling( false, false, false);  // handle the default hotkeys
+    DXUTSetHotkeyHandling( true, false, false);  // handle the default hotkeys
     DXUTSetCursorSettings( true, true ); // Show the cursor and clip it when in full screen
     DXUTCreateWindow( L"EmptyProject" );
     DXUTCreateDevice( WINDOWED, WINSIZEX, WINSIZEY );

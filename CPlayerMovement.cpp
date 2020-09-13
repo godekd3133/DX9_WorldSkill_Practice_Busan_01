@@ -20,20 +20,21 @@ void CPlayerMovement::Awake()
 	ac<CAnimator3D>();
 
 	gc<CAnimator3D>()->AddState("PISTOL_IDLE", "PLAYER_PISTOL_IDLE", 30.f / 1000.f);
-	gc<CAnimator3D>()->AddState("PISTOL_RUN", "PLAYER_PISTOL_RUN", 30.f / 1000.f);
-	gc<CAnimator3D>()->AddState("PISTOL_DASH", "PLAYER_PISTOL_RUN", 30.f / 1000.f, false);
-	gc<CAnimator3D>()->AddState("PISTOL_WALK", "PLAYER_PISTOL_WALK", 30.f / 1000.f);
+	gc<CAnimator3D>()->AddState("PISTOL_RUN", "PLAYER_PISTOL_RUN", 20.f / 1000.f);
+	gc<CAnimator3D>()->AddState("PISTOL_DASH", "PLAYER_PISTOL_RUN", 20.f / 1000.f, false);
+	gc<CAnimator3D>()->AddState("PISTOL_WALK", "PLAYER_PISTOL_WALK", 20.f / 1000.f);
 	gc<CAnimator3D>()->AddState("PISTOL_SHOOT", "PLAYER_PISTOL_SHOOT", 10.f / 1000.f, false);
 	gc<CAnimator3D>()->AddState("PISTOL_SKILL", "PLAYER_PISTOL_SKILL", 30.f / 1000.f, false);
 
 	gc<CAnimator3D>()->AddState("RIFLE_IDLE", "PLAYER_RIFLE_IDLE", 30.f / 1000.f);
-	gc<CAnimator3D>()->AddState("RIFLE_RUN", "PLAYER_RIFLE_RUN", 30.f / 1000.f);
-	gc<CAnimator3D>()->AddState("RIFLE_DASH", "PLAYER_RIFLE_RUN", 30.f / 1000.f, false);
-	gc<CAnimator3D>()->AddState("RIFLE_WALK", "PLAYER_RIFLE_WALK", 30.f / 1000.f);
-	gc<CAnimator3D>()->AddState("RIFLE_SHOOT", "PLAYER_RIFLE_SHOOT", 30.f / 1000.f, false);
+	gc<CAnimator3D>()->AddState("RIFLE_RUN", "PLAYER_RIFLE_RUN", 20.f / 1000.f);
+	gc<CAnimator3D>()->AddState("RIFLE_DASH", "PLAYER_RIFLE_RUN", 20.f / 1000.f, false);
+	gc<CAnimator3D>()->AddState("RIFLE_WALK", "PLAYER_RIFLE_WALK", 20.f / 1000.f);
+	gc<CAnimator3D>()->AddState("RIFLE_SHOOT", "PLAYER_RIFLE_SHOOT", 10.f / 1000.f, false);
 	gc<CAnimator3D>()->AddState("RIFLE_SKILL", "PLAYER_RIFLE_SKILL", 30.f / 1000.f, false);
 
 	gc<CAnimator3D>()->GetState("PISTOL_SHOOT")->AddEvent(4, [=]() { this->FirePlayerBullet(); });
+	gc<CAnimator3D>()->GetState("RIFLE_SHOOT")->AddEvent(4, [=]() { this->FirePlayerBullet(); });
 
 	Animation_SetState("PISTOL_IDLE");
 }
@@ -56,10 +57,32 @@ void CPlayerMovement::Update()
 		bMove = true;
 	GAME.m_fFireTime[m_iWeaponMode] += dt;
 
-	if (INPUT.KeyDown(VK_LBUTTON) && GAME.m_fFireTime[m_iWeaponMode] > GAME.m_fFireDelay[m_iWeaponMode])
+	if (m_bReload == true)
 	{
-		bShoot = true;
+		m_fReloadTime += dt;
+		if (m_fReloadTime > m_fReloadDelay)
+		{
+			Reload();
+			m_fReloadTime = 0.f;
+			m_bReload = false;
+		}
 	}
+	else
+	{
+		if (m_iWeaponMode == 0)
+		{
+			if (INPUT.KeyDown(VK_LBUTTON) && CanFireBullet())
+				bShoot = true;
+		}
+		else
+		{
+			if (INPUT.KeyPress(VK_LBUTTON) && CanFireBullet())
+				bShoot = true;
+			else if (GAME.m_iCurrentBullet[m_iWeaponMode] == 0)
+				m_bReload = true;
+		}
+	}
+
 
 if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 	tf->LerpRotation(Vector3(0, my::GetDirAngle(CAMERA.m_vCharactorAxis[Axis::Foward]), 0), dt * 16);
@@ -70,6 +93,8 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 		bRun = true;
 	if (INPUT.KeyDown(VK_SPACE))
 		bDash = true;
+	if (INPUT.KeyDown('R') && CanReload())
+		m_bReload = true;
 
 	if (Animation_GetCurrentStateName == GetAnimationStateByWeapon() + "IDLE")
 	{
@@ -97,7 +122,7 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 		if (bDash == true && bMove == true)
 		{
 			tf->SetRotation(Vector3(0, my::GetDirAngle(MoveDirection), 0));
-			m_fDashTime = 0.2f;
+			m_fDashTime = 0.3f;
 			m_vVelocity = my::GetDirectionFromQuaternion(tf->m_quatRotation) * 100;
 			Animation_SetState(GetAnimationStateByWeapon() + "DASH");
 		}
@@ -109,7 +134,7 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 		if (bDash == true && bMove == true)
 		{
 			tf->SetRotation(Vector3(0, my::GetDirAngle(MoveDirection), 0));
-			m_fDashTime = 0.2f;
+			m_fDashTime = 0.3f;
 			m_vVelocity = my::GetDirectionFromQuaternion(tf->m_quatRotation) * 100;
 			Animation_SetState(GetAnimationStateByWeapon() + "DASH");
 		}
@@ -130,23 +155,23 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 			Move(m_vVelocity, 1, FALSE);
 			m_fDashTime -= dt;
 			m_fTime += dt;
-			m_vVelocity *= 0.65F;
+			m_vVelocity -= m_vVelocity * 20.f * dt;
 
 			if (m_fTime > 0.025f)
 			{
 				m_fTime = 0.f;
 				CGameObject * pTrail = OBJ.Create();
+
 				pTrail->tf->m_vPos = tf->m_vPos;
 				pTrail->tf->m_vScale = tf->m_vScale;
 				pTrail->tf->m_quatRotation = tf->m_quatRotation;
-				pTrail->ac<CMeshRenderer>()->Init(gc<CMeshRenderer>()->m_pMesh);
-				pTrail->gc<CMeshRenderer>()->sa->Add(
-					[=]()->bool {
-					return pTrail->gc<CMeshRenderer>()->LerpColor(Color(1.f, 1.f, 1.f, 0.f), dt / 2);
-				});
 
-				pTrail->gc<CMeshRenderer>()->sa->Add(
-					[=]()->bool {pTrail->Destroy(); return false; }
+				pTrail->ac<CMeshRenderer>()->Init(gc<CMeshRenderer>()->m_pMesh);
+				pTrail->gc<CMeshRenderer>()->sa->Add(			[=]()->bool {
+					return pTrail->gc<CMeshRenderer>()->LerpColor(Color(1.f, 1.f, 1.f, 0.f), dt * 10);			});
+
+				pTrail->gc<CMeshRenderer>()->sa->Add(			[=]()->bool {
+					pTrail->Destroy(); return false; }
 				);
 
 			}
@@ -168,7 +193,7 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 			m_vVelocity = my::GetDirectionFromQuaternion(tf->m_quatRotation) * 100;
 			Animation_SetState(GetAnimationStateByWeapon() + "DASH");
 		}
-		else if (bShoot == true)
+		else if (bShoot == true )
 		{
 			GAME.m_fFireTime[m_iWeaponMode] = 0.f;
 			Animation_SetState(GetAnimationStateByWeapon() + "IDLE");
@@ -178,14 +203,33 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 	}
 
 
-	
-
 	if (INPUT.KeyDown('1'))
+	{
+		m_iWeaponMode = 0;
+
+		Animation_SetState(GetAnimationStateByWeapon() + Animation_GetCurrentStateName.substr(Animation_GetCurrentStateName.find("_")+1));
+	}
+	else if (INPUT.KeyDown('2'))
+	{
+		m_iWeaponMode = 1;
+		Animation_SetState(GetAnimationStateByWeapon() + Animation_GetCurrentStateName.substr(Animation_GetCurrentStateName.find("_")+1));
+	}
+
+	if (INPUT.KeyDown('3'))
 	{
 		CGameObject * Enemy = OBJ.Create();
 		Enemy->ac<CEnemy01>()->Init(Vector3(-5,0,5 ));
 	}
-
+	if (INPUT.KeyDown('4'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CEnemy02>()->Init(Vector3(-5, 0, 5));
+	}
+	if (INPUT.KeyDown('5'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CEnemy03>()->Init(Vector3(-5, 0, 5));
+	}
 }
 
 void CPlayerMovement::LateUpdate()
@@ -249,16 +293,49 @@ Vector3 CPlayerMovement::GetPlayerMoveDirectionFromInput()
 
 void CPlayerMovement::FirePlayerBullet()
 {
+	GAME.m_iCurrentBullet[m_iWeaponMode]--;
 	if(m_bFixPlayerRotation == false)
 	tf->SetRotation(Vector3(0, my::GetDirAngle(CAMERA.m_vCharactorAxis[Axis::Foward]), 0));
 	
 	Vector3 bulletPosition = tf->m_vPos;
-	Vector3 bulletOffset = Vector3(-0.4f, 1.4f, 0.2f);
+	Vector3 bulletOffset = Vector3(-0.25f, 1.4f, 1.f);
 	Matrix matRot;
 	D3DXMatrixRotationQuaternion(&matRot, &tf->m_quatRotation);
 	D3DXVec3TransformCoord(&bulletOffset, &bulletOffset, &matRot);
 
+	
 	CGameObject * Bullet = OBJ.Create();
-	Bullet->ac<CPlayerBullet>()->Init(bulletPosition + bulletOffset, my::GetDirectionFromQuaternion(tf->m_quatRotation), 100);
+	Bullet->ac<CPlayerBullet>()->Init(bulletPosition + bulletOffset, my::GetDirectionFromQuaternion(tf->m_quatRotation), 100, GAME.m_iBulletDamage[m_iWeaponMode]);
+
+	if (m_iWeaponMode == 1)
+		Bullet->gc<CMeshRenderer>()->m_pMappingOverride = SPRITE("BULLET_MAPPING_03");
+}
+
+bool CPlayerMovement::CanFireBullet()
+{
+	return GAME.m_iCurrentBullet[m_iWeaponMode] > 0 && GAME.m_fFireTime[m_iWeaponMode] > GAME.m_fFireDelay[m_iWeaponMode];
+}
+
+bool CPlayerMovement::CanReload()
+{
+	if (m_bReload)
+		return false;
+
+	if (m_iWeaponMode == 0)
+		return GAME.m_iCurrentBullet[m_iWeaponMode] != GAME.m_iMaxBullet[m_iWeaponMode];
+
+	return GAME.m_iHavingBullet[m_iWeaponMode] > 0 ;
+}
+
+void CPlayerMovement::Reload()
+{
+	if (m_iWeaponMode == 0)
+		GAME.m_iCurrentBullet[m_iWeaponMode] = GAME.m_iMaxBullet[m_iWeaponMode];
+	else
+	{
+		GAME.m_iHavingBullet[m_iWeaponMode] -=  (GAME.m_iMaxBullet[m_iWeaponMode] - GAME.m_iCurrentBullet[m_iWeaponMode]);
+		GAME.m_iCurrentBullet[m_iWeaponMode] += (GAME.m_iMaxBullet[m_iWeaponMode] - GAME.m_iCurrentBullet[m_iWeaponMode]);
+	}
+		
 }
 

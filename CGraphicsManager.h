@@ -39,7 +39,8 @@ public:
 public:
 	void Render_Font(string _Text, Matrix _matWorld,Color _Color, RenderMode _Mode);
 	void Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vector2 _vCenter, Vector2 _vFillAmount, Color _Color,RenderMode _Mode);
-	void Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color);
+	//void Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color); 
+	void Render_Mesh(CMesh * _pMesh, Matrix _matWorld, Color _Color, CSprite * _pOverride = nullptr);
 
 	Matrix ToMatrix(Vector3 _vPos, Vector3  _vScale = Vector3(1, 1,1), Vector3 _vRotation = Vector3(0, 0, 0));
 public:

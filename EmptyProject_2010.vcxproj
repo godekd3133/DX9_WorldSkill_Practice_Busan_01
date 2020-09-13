@@ -394,12 +394,16 @@
     <ClCompile Include="CAnimation3D.cpp" />
     <ClCompile Include="CAnimator2D.cpp" />
     <ClCompile Include="CAnimator3D.cpp" />
+    <ClCompile Include="CBoss01.cpp" />
+    <ClCompile Include="CBoss02.cpp" />
     <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CCollider.cpp" />
     <ClCompile Include="CDamageFont.cpp" />
     <ClCompile Include="CEffect.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEnemy01.cpp" />
+    <ClCompile Include="CEnemy02.cpp" />
+    <ClCompile Include="CEnemy03.cpp" />
     <ClCompile Include="CGameClear.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameOver.cpp" />
@@ -427,6 +431,8 @@
     <ClInclude Include="CAnimation3D.h" />
     <ClInclude Include="CAnimator2D.h" />
     <ClInclude Include="CAnimator3D.h" />
+    <ClInclude Include="CBoss01.h" />
+    <ClInclude Include="CBoss02.h" />
     <ClInclude Include="CButton.h" />
     <ClInclude Include="CCameraManager.h" />
     <ClInclude Include="CCollider.h" />
@@ -434,6 +440,8 @@
     <ClInclude Include="CEffect.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEnemy01.h" />
+    <ClInclude Include="CEnemy02.h" />
+    <ClInclude Include="CEnemy03.h" />
     <ClInclude Include="CGameClear.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameOver.h" />

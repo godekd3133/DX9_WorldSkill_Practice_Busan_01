@@ -28,8 +28,8 @@ void CMeshRenderer::LateUpdate()
 }
 
 void CMeshRenderer::OnRender()
-{
-	GRAPHICS.Render_Mesh(m_pMesh, go->tf->ToMatrix(), m_Color);
+{		
+	GRAPHICS.Render_Mesh(m_pMesh, go->tf->ToMatrix(), m_Color, m_pMappingOverride);
 }
 
 void CMeshRenderer::OnDestroy()

@@ -25,8 +25,51 @@ void CMainGame::Init()
 	AddSprite("MAP_STAGE01_MINIMAP", "map/1-1stage/mapnormal");
 
 	AddMesh("PLAYER_BULLET", "bullet", "");
+	AddSprite("BULLET_MAPPING_01", "Bullet1");
+	AddSprite("BULLET_MAPPING_02", "Bullet2");
+
+	AddSprite("UI_ENEMY_DAMAGEFONT", "UI/damagefont2/Damage", 10);//21);
 
 	AddSprite("EFFECT_EXPLOSION", "Effect/Explosion/Explosion", 8);//21);
+	AddSprite("EFFECT_ENEMY_DEAD", "Effect/EnemyDead/EnemyDead", 23);//21);
+
+	AddSprite("UI_ICON_PISTOL", "UI/PlayerStatus_Weapon_Pistol");
+	AddSprite("UI_ICON_RIFLE", "UI/PlayerStatus_Weapon_Rifle");
+	
+	AddSprite("UI_BULLET_SLASH", "UI/gunGauge2");
+
+	AddSprite("UI_MINIMAP_STAGE01", "UI/Minimap_Stage01");
+	AddSprite("UI_MINIMAP_STAGE02", "UI/Minimap_Stage02");
+
+	AddSprite("UI_MINIMAP_PLAYER", "UI/Minimap_Player");
+	AddSprite("UI_MINIMAP_ENEMY", "UI/Minimap_Enemy");
+	AddSprite("UI_PLAYERSTATUS_01", "UI/PlayerStatus_01");
+	AddSprite("UI_PLAYERSTATUS_03", "UI/PlayerStatus_03");
+	AddSprite("UI_PLAYERSTATUS_HPBAR", "UI/hp_bar");
+	AddSprite("UI_PLAYERSTATUS_HPBAR_YELLOW", "UI/hp_bar_Yellow");
+	AddSprite("UI_PLAYERSTATUS_HPBAR_BG", "UI/HpBarBackground");
+	AddSprite("UI_PLAYERSTATUS_EXPBAR", "UI/exp_bar");
+	AddSprite("UI_PLAYERSTATUS_EXPBAR_BG", "UI/ExpBarBackground");
+
+	AddSprite("UI_BOSSHPBAR_BG", "UI/boss_hp_ui_2");
+	AddSprite("UI_BOSSHPBAR", "UI/boss_hp_bar");
+	AddSprite("UI_BOSSHPBAR_YELLOW", "UI/boss_hp_bar_Yelllow");
+	AddSprite("UI_BOSS_HPICON", "UI/boss_hp_ui_1");
+
+	AddSprite("UI_HPBAR_BG", "UI/hp_ui_1");
+	AddSprite("UI_HPBAR", "UI/enemy_hpbar");
+	AddSprite("UI_HPBAR_YELLOW", "UI/enemy_hpbar_yellow");
+	AddSprite("UI_MONSTER_HPICON", "UI/enemy_hp");
+	AddSprite("UI_SHADOW", "UI/Shadow");
+
+	AddSprite("UI_TIME", "UI/time");
+
+	AddSprite("UI_SKILL_COOLTIME", "skillcolldown");
+	AddSprite("UI_SKILL_BACKGROUND", "skillPreset");
+	AddSprite("UI_SKILL_01", "miss");
+	AddSprite("UI_SKILL_02", "shotdown");
+	AddSprite("UI_SKILL_03", "antibiotic");
+	AddSprite("UI_SKILL_04", "vaccin");
 
 
 	AddMesh("MAP_STAGE02_1", "Map/2-1Stage/2stageRemake1", "Map/2-1Stage");
@@ -49,14 +92,15 @@ void CMainGame::Init()
 	AddMesh("ENEMY_01_WALK", "monster1/Walk/Walk", "monster1", 31, true);
 	AddMesh("ENEMY_01_ATTACK", "monster1/att1/aAttack", "monster1", 26, true);
 
-	AddMesh("ENEMY_02_IDLE", "monster2/Idle/Idle", "monster2", 41, true);
-	AddMesh("ENEMY_02_WALK", "monster2/Walk/Walk", "monster2", 41, true);
-	AddMesh("ENEMY_02_ATTACK", "monster2/att1/Attack", "monster2", 31, true);
-	AddMesh("ENEMY_02_DEAD", "monster2/Dead/Dead", "monster2", 41, true);
+	AddMesh("ENEMY_02_IDLE", "monster2/Idle/Idle", "monster2", 61, true);
+	AddMesh("ENEMY_02_WALK", "monster2/Walk/Walk", "monster2", 25, true);
+	AddMesh("ENEMY_02_ATTACK_01", "monster2/att1/Attack01", "monster2", 41);
+	AddMesh("ENEMY_02_ATTACK_02", "monster2/att2/Attack02", "monster2", 38);
+	AddMesh("ENEMY_02_DEAD", "monster2/Dead/Dead", "monster2", 36, true);
 
 	AddMesh("ENEMY_03_IDLE", "monster3/Idle/Idle", "monster3", 51, true);
 	AddMesh("ENEMY_03_WALK", "monster3/Walk/Walk", "monster3", 36, true);
-	AddMesh("ENEMY_03_ATTACK", "monster3/att1/Attack", "monster3", 36, true);
+	AddMesh("ENEMY_03_ATTACK", "monster3/att1/Attack", "monster3",36);
 	AddMesh("ENEMY_03_DEAD", "monster3/Dead/Dead", "monster3", 44, true);
 
 	AddMesh("BOSS_01_IDLE", "Boss/Idle/Idle", "Boss", 43, true);

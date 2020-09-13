@@ -26,11 +26,14 @@ public:
 	virtual void OnCollision(CGameObject * _pObject) override;
 
 public:
-	void Init(CMesh * _pMesh , int _Hp, int _Size, float _FindRange, float _AttackRange, float _MoveSpeed);
+	void Init(CMesh * _pMesh , int _Hp, float _Size, float _FindRange, float _AttackRange, float _MoveSpeed, float _Height);
 	void Hit(int _Damage);
 	void Move(Vector3 _vDirection, float _MoveSpeed);
-	void OnDead();
+	Event OnDead;
+	void OnHit(int _Damage);
+
 public:
+	bool m_bBoss = false;
 	int m_iMaxHp;
 	int m_iCurHp;
 	float m_fFindRange;
@@ -38,12 +41,12 @@ public:
 	float m_fMoveSpeed ;
 	bool m_bVaccine = false;
 	bool m_bIsDead = true;
-
-
-
-	ENEMY_STATE m_State;
-
+	float m_fHeight;
 public:
 	CGameObject * m_pTarget = nullptr;
+
+	CGameObject * m_pHpGague = nullptr;
+	CGameObject * m_pHpGagueYellow = nullptr;
+	CGameObject * m_pShadow = nullptr;
 };
 
