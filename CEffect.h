@@ -19,4 +19,5 @@ public:
 	void Init(string _ResKey, float _Delay, Vector3 _vPos);
 };
 
-#define EFFECT(Pos,Scale,resKey) CGameObject * Effect= OBJ.Create(); Effect->tf->m_vScale = Scale; Effect->ac<CEffect>()->Init(resKey,0.05f,Pos);
+#define EFFECT(Pos,Scale,resKey){ CGameObject * Effect= OBJ.Create(); Effect->tf->m_vScale = Scale; Effect->ac<CEffect>()->Init(resKey,0.05f,Pos);}
+#define EFFECT2(Pos,Scale,resKey){ CGameObject * Effect= OBJ.Create(); Effect->tf->m_vScale = Scale; Effect->ac<CEffect>()->Init(resKey,0.05f,Pos); Effect->gc<CSpriteRenderer>()->m_RenderMode = RenderMode::RM_BillboardNonUI; }

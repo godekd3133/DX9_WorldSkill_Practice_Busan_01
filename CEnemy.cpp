@@ -19,9 +19,9 @@ void CEnemy::Start()
 {
 	auto HpGaugeBG = OBJ.Create();
 	if (m_bBoss == false)
-		HpGaugeBG->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR_BG"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		HpGaugeBG->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR_BG"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 	else
-		HpGaugeBG->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR_BG"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		HpGaugeBG->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR_BG"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 
 	go->AddChild(HpGaugeBG);
 	HpGaugeBG->tf->m_vScale = Vector3(0.01f, 0.01f, 0.f);
@@ -30,9 +30,9 @@ void CEnemy::Start()
 
 	m_pHpGagueYellow = OBJ.Create();
 	if (m_bBoss == false)
-		m_pHpGagueYellow->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR_YELLOW"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		m_pHpGagueYellow->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR_YELLOW"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 	else
-		m_pHpGagueYellow->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR_YELLOW"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		m_pHpGagueYellow->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR_YELLOW"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 	go->AddChild(m_pHpGagueYellow);
 	m_pHpGagueYellow->tf->m_vScale = Vector3(0.01f, 0.01f, 0.f);
 	m_pHpGagueYellow->tf->m_vScale.y = -m_pHpGagueYellow->tf->m_vScale.y;
@@ -40,9 +40,9 @@ void CEnemy::Start()
 
 	m_pHpGague = OBJ.Create();
 	if (m_bBoss == false)
-		m_pHpGague->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		m_pHpGague->ac<CSpriteRenderer>()->Init(SPRITE("UI_HPBAR"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 	else
-		m_pHpGague->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		m_pHpGague->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSSHPBAR"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 
 
 	go->AddChild(m_pHpGague);
@@ -53,13 +53,13 @@ void CEnemy::Start()
 	auto EnemyIcon = OBJ.Create();
 	if (m_bBoss == false)
 	{
-		EnemyIcon->ac<CSpriteRenderer>()->Init(SPRITE("UI_MONSTER_HPICON"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		EnemyIcon->ac<CSpriteRenderer>()->Init(SPRITE("UI_MONSTER_HPICON"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 		EnemyIcon->gc<CSpriteRenderer>()->m_vAnchor = Vector2(0.5f + 99.f / 77.f, 0.5f);
 
 	}
 	else
 	{
-		EnemyIcon->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSS_HPICON"), SortingLayer::SR_UI, RenderMode::RM_Billboard);
+		EnemyIcon->ac<CSpriteRenderer>()->Init(SPRITE("UI_BOSS_HPICON"), SortingLayer::SR_BILBOARDUI, RenderMode::RM_Billboard);
 		EnemyIcon->gc<CSpriteRenderer>()->m_vAnchor = Vector2(0.5f + 199.f / 99.f, 0.5f);
 
 	}

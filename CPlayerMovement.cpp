@@ -230,6 +230,70 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 		CGameObject * Enemy = OBJ.Create();
 		Enemy->ac<CEnemy03>()->Init(Vector3(-5, 0, 5));
 	}
+	if (INPUT.KeyDown('6'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CBoss01>()->Init(Vector3(-5, 0, 5));
+	}
+
+	if (INPUT.KeyDown('7'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CBoss02>()->Init(Vector3(-5, 0, 5));
+	}
+	if (INPUT.KeyDown('8'))
+	{
+		Vector3  Axis[4];
+		Axis[0] = my::GetRotatedDir(Vector3(0, 0, 1), 45);
+		Axis[1] = my::GetRotatedDir(Vector3(0, 0, 1), 90 + 45);
+		Axis[2] = my::GetRotatedDir(Vector3(0, 0, 1), 180 + 45);
+		Axis[3] = my::GetRotatedDir(Vector3(0, 0, 1), 270 + 45);
+		sa->Add(
+			[=]()->bool {
+			CAMERA.Shake(0.05f, 1.f);
+			EFFECT2(tf->m_vPos + Axis[0] * 1 ,  Vector3(0.005, 0.005, 0.005), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[1] * 1 , Vector3(0.005, 0.005, 0.005), "EFFECT_PLAYER_SKILL_02" );
+			EFFECT2(tf->m_vPos + Axis[2] * 1 , Vector3(0.005, 0.005, 0.005), "EFFECT_PLAYER_SKILL_02" );
+			EFFECT2(tf->m_vPos + Axis[3] * 1 , Vector3(0.005, 0.005, 0.005), "EFFECT_PLAYER_SKILL_02" );
+			return false;
+		});
+
+		sa->Delay(0.3f);
+
+		sa->Add(
+			[=]()->bool {
+			CAMERA.Shake(0.05f, 1.25f);
+			EFFECT2(tf->m_vPos + Axis[0] * 3 , Vector3(0.0075, 0.0075, 0.0075), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[1] * 3 , Vector3(0.0075, 0.0075, 0.0075), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[2] * 3 , Vector3(0.0075, 0.0075, 0.0075), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[3] * 3 , Vector3(0.0075, 0.0075, 0.0075), "EFFECT_PLAYER_SKILL_02");
+			return false;
+		});
+
+		sa->Delay(0.4f);
+
+		sa->Add(
+			[=]()->bool {
+			CAMERA.Shake(0.15f, 1.75f);
+			EFFECT2(tf->m_vPos + Axis[0] * 5 , Vector3(0.01, 0.01, 0.01), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[1] * 5 , Vector3(0.01, 0.01, 0.01), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[2] * 5 , Vector3(0.01, 0.01, 0.01), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[3] * 5 , Vector3(0.01, 0.01, 0.01), "EFFECT_PLAYER_SKILL_02");
+			return false;
+		});
+
+		sa->Delay(0.5f);
+
+		sa->Add(
+			[=]()->bool {
+			CAMERA.Shake(0.25f, 2.5f);
+			EFFECT2(tf->m_vPos + Axis[0] * 7, Vector3(0.0125, 0.0125, 0.0125), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[1] * 7, Vector3(0.0125, 0.0125, 0.0125), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[2] * 7, Vector3(0.0125, 0.0125, 0.0125), "EFFECT_PLAYER_SKILL_02");
+			EFFECT2(tf->m_vPos + Axis[3] * 7, Vector3(0.0125, 0.0125, 0.0125), "EFFECT_PLAYER_SKILL_02");
+			return false;
+		});
+	}
 }
 
 void CPlayerMovement::LateUpdate()
@@ -308,7 +372,7 @@ void CPlayerMovement::FirePlayerBullet()
 	Bullet->ac<CPlayerBullet>()->Init(bulletPosition + bulletOffset, my::GetDirectionFromQuaternion(tf->m_quatRotation), 100, GAME.m_iBulletDamage[m_iWeaponMode]);
 
 	if (m_iWeaponMode == 1)
-		Bullet->gc<CMeshRenderer>()->m_pMappingOverride = SPRITE("BULLET_MAPPING_03");
+		Bullet->gc<CMeshRenderer>()->m_pMappingOverride = SPRITE("BULLET_MAPPING_02");
 }
 
 bool CPlayerMovement::CanFireBullet()
@@ -336,6 +400,7 @@ void CPlayerMovement::Reload()
 		GAME.m_iHavingBullet[m_iWeaponMode] -=  (GAME.m_iMaxBullet[m_iWeaponMode] - GAME.m_iCurrentBullet[m_iWeaponMode]);
 		GAME.m_iCurrentBullet[m_iWeaponMode] += (GAME.m_iMaxBullet[m_iWeaponMode] - GAME.m_iCurrentBullet[m_iWeaponMode]);
 	}
+	
 		
 }
 

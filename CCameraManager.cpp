@@ -93,7 +93,7 @@ void CCameraManager::SetTransform()
 
 void CCameraManager::Shake(float _fTime, float _fPower)
 {
-	m_fShakePower = _fPower;
+	m_fShakePower = _fPower/10.f;
 	m_fCameraTime = _fTime;
 }
 

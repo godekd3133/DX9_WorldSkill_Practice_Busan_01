@@ -32,6 +32,7 @@ void CMainGame::Init()
 
 	AddSprite("EFFECT_EXPLOSION", "Effect/Explosion/Explosion", 8);//21);
 	AddSprite("EFFECT_ENEMY_DEAD", "Effect/EnemyDead/EnemyDead", 23);//21);
+	AddSprite("EFFECT_PLAYER_SKILL_02", "Effect/PlayerSkill02/PlayerSkill02_2", 16);//21);
 
 	AddSprite("UI_ICON_PISTOL", "UI/PlayerStatus_Weapon_Pistol");
 	AddSprite("UI_ICON_RIFLE", "UI/PlayerStatus_Weapon_Rifle");
@@ -106,9 +107,9 @@ void CMainGame::Init()
 	AddMesh("BOSS_01_IDLE", "Boss/Idle/Idle", "Boss", 43, true);
 	AddMesh("BOSS_01_WALK", "Boss/Walk/Walk", "Boss", 43, true);
 	AddMesh("BOSS_01_ATTACK_01", "Boss/att1/Attack01", "Boss", 53, true);
-	AddMesh("BOSS_01_ATTACK_02", "Boss/att2/Attack02", "Boss", 46, true);
+	AddMesh("BOSS_01_ATTACK_02", "Boss/att2/Attack02", "Boss", 46,true);
 	AddMesh("BOSS_01_SKILL", "Boss/Skill/Skill", "Boss", 83, true);
-	AddMesh("BOSS_01_DEAD", "Boss/Dead/Dead", "Boss", 74, true);
+	AddMesh("BOSS_01_DEAD", "Boss/Dead/Dead", "Bo ss", 74, true);
 	AddMesh("BOSS_01_BORN", "Boss/Born/Born", "Boss", 118, true);
 
 	AddMesh("BOSS_02_IDLE", "Boss2/Idle/Idle", "Boss2", 36, true);

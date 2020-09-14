@@ -72,7 +72,7 @@ void CEnemy01::OnCollision(CGameObject * _pObject)
 
 void CEnemy01::Init(Vector3 _vPos)
 {
-	ac<CEnemy>()->Init(MESH("ENEMY_01_IDLE (1)"), 500, 0.8f, 15, 2, 5,1);
+	ac<CEnemy>()->Init(MESH("ENEMY_01_IDLE (1)"), 500, 0.8f, 15, 2, 5,1.5);
 	m_pEnemy = gc<CEnemy>();
 	m_pEnemy->OnDead = [=]() {OnDead(); };
 
@@ -86,7 +86,7 @@ void CEnemy01::Init(Vector3 _vPos)
 	gc<CAnimator3D>()->SetCurrentState("IDLE");
 
 	tf->m_vPos = _vPos;
-	tf->m_vScale = Vector3(0.01, 0.01, 0.01);
+	tf->m_vScale = Vector3(0.015, 0.015, 0.015);
 }
 
 void CEnemy01::OnAttack()

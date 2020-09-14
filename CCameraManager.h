@@ -50,9 +50,9 @@ public:
 private:
 	void ShakeCamera()
 	{
-		m_vShakePos.x += rand() % (int)m_fShakePower - m_fShakePower / 2;
-		m_vShakePos.y += rand() % (int)m_fShakePower - m_fShakePower / 2;
-		m_vShakePos.z += rand() % (int)m_fShakePower - m_fShakePower / 2;
+		m_vShakePos.x += (rand() % (int)(m_fShakePower *100))/100.f - (m_fShakePower*100.f)/100.f / 2.f;
+		m_vShakePos.y += (rand() % (int)(m_fShakePower *100))/100.f - (m_fShakePower*100.f)/100.f / 2.f;
+		m_vShakePos.z += (rand() % (int)(m_fShakePower *100))/100.f - (m_fShakePower*100.f)/100.f / 2.f;
 	}
 
 public:

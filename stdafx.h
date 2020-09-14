@@ -129,7 +129,7 @@ namespace my
 };
 using namespace my;
 enum class RenderMode {RM_Default , RM_UI, RM_Billboard, RM_BillboardNonUI};
-enum class SortingLayer { SR_Default,SR_Effect, SR_UI,SR_UI2,SR_SCREEEN};
+enum class SortingLayer { SR_Default,SR_Effect, SR_BILBOARDUI,SR_UI,SR_UI2,SR_SCREEEN};
 
 enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "DXUT/Optional/SDKsound.h"
@@ -165,7 +165,10 @@ enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "CEnemy01.h"
 #include "CEnemy02.h"
 #include "CEnemy03.h"
-
+#include "CEnemy03.h"
+#include "CEnemy03.h"
+#include "CBoss01.h"
+#include "CBoss02.h"
  
 #include "CButton.h"
 #include "CPlayerUI.h"

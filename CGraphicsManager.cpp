@@ -161,7 +161,10 @@ void CGraphicsManager::Render_Font(string _Text, Matrix _matWorld, Color _Color,
 	else if (_Mode == RenderMode::RM_Default)
 		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_OBJECTSPACE);
 	else if (_Mode == RenderMode::RM_UI)
+	{
+		g_Device->SetRenderState(D3DRS_ZENABLE, false);
 		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
+	}
 	m_pSprite->SetTransform(&_matWorld);
 	m_pFont->DrawTextA(m_pSprite, _Text.c_str(), _Text.size(), NULL, DT_CENTER | DT_NOCLIP , _Color);
 	m_pSprite->End();
@@ -173,6 +176,7 @@ void CGraphicsManager::Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vecto
 	_pSprite->m_vAnchor = _vCenter;
 	if (_Mode == RenderMode::RM_UI)
 	{
+		g_Device->SetRenderState(D3DRS_ZENABLE, false);
 		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND);
 	}
 	else if (_Mode == RenderMode::RM_Default)
