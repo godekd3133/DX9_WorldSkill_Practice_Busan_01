@@ -50,7 +50,7 @@ void CEnemy03::Update()
 				//공격 사거리 안에 들면 공격
 				else
 				{
-					OnAttack();
+
 					Animation_SetState("ATTACK");
 				}
 			}
@@ -83,6 +83,9 @@ void CEnemy03::Init(Vector3 _vPos)
 	gc<CAnimator3D>()->AddState("WALK", "ENEMY_03_WALK", 30.f / 1000.f);
 	gc<CAnimator3D>()->AddState("ATTACK", "ENEMY_03_ATTACK", 30.f / 1000.f, false);
 	gc<CAnimator3D>()->AddState("DEAD", "ENEMY_03_DEAD", 30.f / 1000.f, false);
+	
+	gc<CAnimator3D>()->GetState("ATTACK")->AddEvent(11, [=]() {OnAttack(); });
+
 
 	gc<CAnimator3D>()->SetCurrentState("IDLE");
 
@@ -92,7 +95,9 @@ void CEnemy03::Init(Vector3 _vPos)
 
 void CEnemy03::OnAttack()
 {
-
+	CGameObject * Bullet = OBJ.Create();
+	Bullet->ac<CEnemyBullet>()->Init(tf->m_vPos + Vector3 (0,1.5f,0), my::GetDirection(tf->m_vPos, GAME.m_pPlayer->tf->m_vPos), 30.f, 10.f);
+	Bullet->tf->m_vScale = Vector3(0.75f, 0.75f, 0.75f);
 }
 void CEnemy03::OnDead()
 {

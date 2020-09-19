@@ -34,8 +34,6 @@ public:
 	list<CGameObject *> GetCollisionObject(Vector3 _vPos, float _Radius, Tag _Tag);
 	list<CGameObject *> GetCollisionObject(Vector3 _vPos, float _Radius);
 
-	list<CGameObject *> RayCast(Vector3 _vPos, Vector3 _vDir, float _fDist = -1.f);
-	list<CGameObject *> RayCast(Vector3 _vPos, Vector3 _vDir, Tag _TagMask, float _fDist = -1.f);
 
 	void SortByDistance(list<CGameObject*>& _listObject);
 };

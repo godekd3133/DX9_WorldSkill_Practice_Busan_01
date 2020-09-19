@@ -31,7 +31,7 @@
     <ProjectGuid>{D3D09108-96D0-4629-88B8-122C0256058C}</ProjectGuid>
     <RootNamespace>EmptyProject</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -404,11 +404,13 @@
     <ClCompile Include="CEnemy01.cpp" />
     <ClCompile Include="CEnemy02.cpp" />
     <ClCompile Include="CEnemy03.cpp" />
+    <ClCompile Include="CEnemyBullet.cpp" />
     <ClCompile Include="CGameClear.cpp" />
     <ClCompile Include="CGameManager.cpp" />
     <ClCompile Include="CGameOver.cpp" />
     <ClCompile Include="CItem.cpp" />
     <ClCompile Include="CMeshRenderer.cpp" />
+    <ClCompile Include="CObstacle.cpp" />
     <ClCompile Include="CPlayerBullet.cpp" />
     <ClCompile Include="CPlayerMovement.cpp" />
     <ClCompile Include="CPlayerUI.cpp" />
@@ -442,6 +444,7 @@
     <ClInclude Include="CEnemy01.h" />
     <ClInclude Include="CEnemy02.h" />
     <ClInclude Include="CEnemy03.h" />
+    <ClInclude Include="CEnemyBullet.h" />
     <ClInclude Include="CGameClear.h" />
     <ClInclude Include="CGameManager.h" />
     <ClInclude Include="CGameOver.h" />
@@ -450,6 +453,7 @@
     <ClInclude Include="CItem.h" />
     <ClInclude Include="CMeshRenderer.h" />
     <ClInclude Include="CObjectManager.h" />
+    <ClInclude Include="CObstacle.h" />
     <ClInclude Include="CPlayerBullet.h" />
     <ClInclude Include="CPlayerMovement.h" />
     <ClInclude Include="CPlayerUI.h" />

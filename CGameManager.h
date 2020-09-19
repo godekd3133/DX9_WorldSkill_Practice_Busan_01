@@ -17,8 +17,6 @@ public:
 
 	float MoveSpeed = 6;
 
-
-
 	float m_fFireTime[2] = { 0.f, 0.f };
 	float m_fFireDelay[2] = { 0.25f, 0.1f };
 	float m_iBulletDamage[2] = { 120,70 };
@@ -31,7 +29,7 @@ public:
 
 	int Level;
 
-	int CurHp;
+	int CurHp = 400;
 	int MaxHp;
 
 	int CurExp;

@@ -20,15 +20,23 @@ CMainGame::~CMainGame()
 
 void CMainGame::Init()
 {
-
+	//GRAPHICS.AddSound("BG", L"./resource/2.5Stage.wav");
+	//GRAPHICS.Play("BG", true);
 	AddMesh("MAP_STAGE01", "map/1-1stage/1stage_reamke", "map/1-1stage");//21);
 	AddSprite("MAP_STAGE01_MINIMAP", "map/1-1stage/mapnormal");
+
+	AddMesh("MAP_STAGE02_PART01", "map/2-1stage/2stageRemake1", "map/2-1stage");//21);
+	AddMesh("MAP_STAGE02_PART02", "map/2-1stage/2stageRemake2", "map/2-1stage");//21);
+	AddMesh("MAP_STAGE02_PART03", "map/2-1stage/2stageRemake3", "map/2-1stage");//21);
 
 	AddMesh("PLAYER_BULLET", "bullet", "");
 	AddSprite("BULLET_MAPPING_01", "Bullet1");
 	AddSprite("BULLET_MAPPING_02", "Bullet2");
 
-	AddSprite("UI_ENEMY_DAMAGEFONT", "UI/damagefont2/Damage", 10);//21);
+	AddMesh("OBSTACLE_MINE", "Obstacle/mineland/mine", "Obstacle/mineland");
+	AddMesh("OBSTACLE_TRAP", "Obstacle/Trap/Trap", "Obstacle/Trap");
+	AddMesh("OBSTACLE_THOM", "Obstacle/Thorn/model", "Obstacle/Thorn");
+AddSprite("UI_ENEMY_DAMAGEFONT", "UI/damagefont2/Damage", 10);//21);
 
 	AddSprite("EFFECT_EXPLOSION", "Effect/Explosion/Explosion", 8);//21);
 	AddSprite("EFFECT_ENEMY_DEAD", "Effect/EnemyDead/EnemyDead", 23);//21);
@@ -157,12 +165,15 @@ void CMainGame::Render()
 
 void CMainGame::Release()
 {
+
+
 	CInputManager::ReleaseInstance();
 	CGraphicsManager::ReleaseInstance();
 	CSceneManager::ReleaseInstance();
 	CObjectManager::ReleaseInstance();
 	CCameraManager::ReleaseInstance();
 	CGameManager::ReleaseInstance();
+	
 }
 
 void CMainGame::OnLostDevice()
@@ -206,7 +217,6 @@ void CMainGame::AddMesh(string _Key, string _Path, string _MapPath, int _Count,b
 	}
 	else
 	{
-		thread th = thread([=]() {
 			for (int i = 0; i < _Count; i++)
 			{
 				if (test == false)
@@ -225,20 +235,19 @@ void CMainGame::AddMesh(string _Key, string _Path, string _MapPath, int _Count,b
 						string MapPath = "./resource/" + _MapPath + "/";
 						GRAPHICS.AddMesh(Key, Path, MapPath);
 					}
-					else
-					{
-						string Key = _Key + " (" + to_string(i + 1) + ")";
-						string Key2 = _Key + " (" + to_string(1) + ")";
-						string Path = "./resource/" + _Path + " (" + to_string(i + 1) + ").obj";
-						string MapPath = "./resource/" + _MapPath + "/";
-						GRAPHICS.m_mapMesh.insert(make_pair(Key, MESH(Key2)));
-					}
+					//else
+					//{
+					//	string Key = _Key + " (" + to_string(i + 1) + ")";
+					//	string Key2 = _Key + " (" + to_string(1) + ")";
+					//	string Path = "./resource/" + _Path + " (" + to_string(i + 1) + ").obj";
+					//	string MapPath = "./resource/" + _MapPath + "/";
+					//	GRAPHICS.m_mapMesh.insert(make_pair(Key, MESH(Key2)));
+					//}
 				}
 
 
 			}
-		});
-		th.join();
+
 
 	}
 }

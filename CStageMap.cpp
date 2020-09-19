@@ -52,7 +52,7 @@ void CStageMap::Init(list<CMesh *> _listMesh, CSprite * _pMinimap, CSprite * _pC
 		CGameObject * pMap = OBJ.Create("MAP",Tag::Map);
 		pMap->ac<CMeshRenderer>()->Init(iter);
 		go->AddChild(pMap);
-		pMap->tf->m_vScale = Vector3(-1.f, 1.f, 1.f);
+		pMap->tf->m_vScale = Vector3(1.f, 1.f, 1.f);
 	}
 
 	tf->m_vPos = Vector3(0, 0, 0);
@@ -60,6 +60,7 @@ void CStageMap::Init(list<CMesh *> _listMesh, CSprite * _pMinimap, CSprite * _pC
 
 MapCollision CStageMap::GetCollisionInfoByCollisionMap(Vector3 _vPos)
 {
+	return MapCollision::Floor;
 	D3DLOCKED_RECT lR;
 	m_pCollisionMap->m_pTexture->LockRect(0, &lR, nullptr, D3DLOCK_DISCARD);
 	DWORD* dwColor = reinterpret_cast<DWORD*>(lR.pBits);

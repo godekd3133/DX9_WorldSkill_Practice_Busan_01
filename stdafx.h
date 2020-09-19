@@ -13,12 +13,16 @@
 #include <thread>
 #include <future>
 #include <mutex>
+#include "DXUT/Optional/SDKsound.h"
+#include "DXUT/Optional/SDKwavefile.h"
+
+#pragma comment(lib, "dsound.lib")
 
 using namespace std;
 
-const INT WINSIZEX = 1920;
-const INT WINSIZEY = 1080;
-const bool WINDOWED = true;
+static INT WINSIZEX = 1920;
+static INT WINSIZEY = 1080;
+static bool WINDOWED = true;
 
 #define g_Device DXUTGetD3D9Device()
 #define dt DXUTGetElapsedTime() * INPUT.TimeScale
@@ -131,7 +135,7 @@ using namespace my;
 enum class RenderMode {RM_Default , RM_UI, RM_Billboard, RM_BillboardNonUI};
 enum class SortingLayer { SR_Default,SR_Effect, SR_BILBOARDUI,SR_UI,SR_UI2,SR_SCREEEN};
 
-enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
+enum class  Tag{Untagged,Map,Player,Enemy,Item,UI , PlayerBulllet, EnemyBullet};
 #include "DXUT/Optional/SDKsound.h"
 #include "DXUT/Optional/SDKwavefile.h"
 #pragma comment(lib, "dsound.lib")
@@ -169,7 +173,9 @@ enum class  Tag{Untagged,Map,Player,Enemy,Item,UI};
 #include "CEnemy03.h"
 #include "CBoss01.h"
 #include "CBoss02.h"
- 
+#include "CEnemyBullet.h" 
+#include "CObstacle.h"
+
 #include "CButton.h"
 #include "CPlayerUI.h"
 #include "CItem.h"

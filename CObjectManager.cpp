@@ -102,8 +102,6 @@ void CObjectManager::Update()
 	{
 		if ((*iter)->m_bDestroy == true)
 		{
-
-
 			SAFE_DELETE(*iter);
 			iter = m_listGameObject.erase(iter);
 		}
@@ -233,45 +231,6 @@ list<CGameObject*> CObjectManager::GetCollisionObject(Vector3 _vPos, float _Radi
 	pCollision->Destroy();
 
 	return listCollision;
-}
-
-list<CGameObject *>  CObjectManager::RayCast(Vector3 _vPos, Vector3 _vDir, float _fDist)
-{
-	CollisionInfo info;
-	list<CGameObject*> CollisionObject;
-	for (auto iter : m_listCollider3D)
-	{
-		bool res ;
-		if (_fDist == -1.f)
-			res = CAMERA.RayCastAtSphere(iter->Sphere, iter->tf->ToMatrix(), _vPos, _vDir, 1000000000, info);
-		else 
-			res = CAMERA.RayCastAtSphere(iter->Sphere, iter->tf->ToMatrix(), _vPos, _vDir, _fDist, info);
-	
-		if (res == true)
-			CollisionObject.push_back(iter->go);
-	}
-	
-	return CollisionObject;
-}
-
-list<CGameObject *> CObjectManager::RayCast(Vector3 _vPos, Vector3 _vDir, Tag _TagMask, float _fDist)
-{
-	CollisionInfo info;
-	list<CGameObject*> CollisionObject;
-	for (auto iter : m_listCollider3D)
-	{
-		if (_TagMask != iter->go->m_Tag) continue;
-		bool res;
-		if (_fDist == -1.f)
-			res = CAMERA.RayCastAtSphere(iter->Sphere, iter->tf->ToMatrix(), _vPos, _vDir, 1000000000, info);
-		else
-			res = CAMERA.RayCastAtSphere(iter->Sphere, iter->tf->ToMatrix(), _vPos, _vDir, _fDist, info);
-
-		if (res == true)
-			CollisionObject.push_back(iter->go);
-	}
-
-	return CollisionObject;
 }
 
 void CObjectManager::SortByDistance(list<CGameObject*>& _listObject)

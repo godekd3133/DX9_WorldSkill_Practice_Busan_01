@@ -131,6 +131,9 @@
     <Filter Include="002 : GAME\Component\Enemy\Enemys">
       <UniqueIdentifier>{c1a34803-fd6e-4973-820f-644a90561eca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="002 : GAME\Component\Obstacle">
+      <UniqueIdentifier>{6bf1894f-a8ae-4865-9ee8-eb81afc21579}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="DXUT\Optional\directx.ico">
@@ -304,7 +307,6 @@
     <ClCompile Include="CStageMap.cpp">
       <Filter>002 : GAME\Component\Map</Filter>
     </ClCompile>
-    <ClCompile Include="CPlayerBullet.cpp" />
     <ClCompile Include="CEnemy01.cpp">
       <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
     </ClCompile>
@@ -320,11 +322,15 @@
     <ClCompile Include="CBoss02.cpp">
       <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
     </ClCompile>
+    <ClCompile Include="CObstacle.cpp" />
+    <ClCompile Include="CEnemyBullet.cpp">
+      <Filter>002 : GAME\Component\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerBullet.cpp">
+      <Filter>002 : GAME\Component\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGraphicsManager.h">
-      <Filter>001 : ENGINE\Manager\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="CCameraManager.h">
       <Filter>001 : ENGINE\Manager\Camera</Filter>
     </ClInclude>
@@ -437,7 +443,6 @@
     <ClInclude Include="CStageMap.h">
       <Filter>002 : GAME\Component\Map</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayerBullet.h" />
     <ClInclude Include="CEnemy01.h">
       <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
     </ClInclude>
@@ -452,6 +457,16 @@
     </ClInclude>
     <ClInclude Include="CBoss02.h">
       <Filter>002 : GAME\Component\Enemy\Enemys</Filter>
+    </ClInclude>
+    <ClInclude Include="CObstacle.h" />
+    <ClInclude Include="CEnemyBullet.h">
+      <Filter>002 : GAME\Component\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerBullet.h">
+      <Filter>002 : GAME\Component\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="CGraphicsManager.h">
+      <Filter>001 : ENGINE\Manager\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

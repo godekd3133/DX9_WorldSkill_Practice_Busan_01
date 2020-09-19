@@ -50,6 +50,7 @@ void CEnemy::Start()
 	m_pHpGague->tf->m_vScale.y = -m_pHpGague->tf->m_vScale.y;
 	m_pHpGague->tf->m_vPos = Vector3(0, m_fHeight, 0);
 
+
 	auto EnemyIcon = OBJ.Create();
 	if (m_bBoss == false)
 	{
@@ -68,8 +69,13 @@ void CEnemy::Start()
 	EnemyIcon->tf->m_vScale.y = -EnemyIcon->tf->m_vScale.y;
 	EnemyIcon->tf->m_vPos = Vector3(0, m_fHeight, 0);
 
+	m_pHpText = OBJ.Create();
 
+	m_pHpText->ac<CText>()->Init("dsad", SortingLayer::SR_BILBOARDUI, RenderMode::RM_BillboardNonUI);
+//	go->AddChild(m_pHpText);
 
+	m_pHpText->tf->m_vPos = Vector3(5,3, 5);
+	m_pHpText->tf->m_vScale = Vector3(2, 2, 2);
 
 
 }
@@ -111,6 +117,8 @@ void CEnemy::Update()
 
 	float scale = (gc<CCollider>()->m_fRadius *100.f)  / max(abs(0 - tf->m_vPos.y), 100);
 	m_pShadow->tf->m_vScale = Vector3(scale, scale, 1.f) / 100.f;
+
+	m_pHpText->gc<CText>()->m_Text = "HP : " + to_string(m_iCurHp) + " / " + to_string(m_iMaxHp);
 }
 
 void CEnemy::LateUpdate()

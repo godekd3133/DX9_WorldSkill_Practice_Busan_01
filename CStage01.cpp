@@ -16,17 +16,19 @@ void CStage01::Init()
 	GAME.Timer = 180;
 	CGameObject * Map = OBJ.Create("Map", Tag::Map);
 	list<CMesh*> listMap;
-	listMap.push_back(MESH("MAP_STAGE01"));
+	listMap.push_back(MESH("MAP_STAGE02_PART01"));
+	listMap.push_back(MESH("MAP_STAGE02_PART02"));
+	listMap.push_back(MESH("MAP_STAGE02_PART03"));
 	Map->ac<CStageMap>()->Init(listMap, SPRITE("MAP_STAGE01_MINIMAP"), SPRITE("MAP_STAGE01_MINIMAP"));
 	GAME.m_pMap = Map->gc<CStageMap>();
 	
-	CGameObject * Player = OBJ.Create();
+	CGameObject * Player = OBJ.Create("Player", Tag::Player);
 	Player->ac<CPlayerMovement>();
 	Player->tf->m_vPos = Vector3(-5, 0, 5);
 	GAME.m_pPlayer = Player;
 
-	CGameObject * PlayerUI = OBJ.Create();
-	PlayerUI->ac<CPlayerUI>();
+	//CGameObject * PlayerUI = OBJ.Create();
+	//PlayerUI->ac<CPlayerUI>();
 }
 
 void CStage01::Update()

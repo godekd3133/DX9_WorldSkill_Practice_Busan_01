@@ -6,33 +6,41 @@ CGraphicsManager::CGraphicsManager()
 {
 	D3DXCreateSprite(g_Device, &m_pSprite);
 	D3DXCreateFont(g_Device, 80, 0, 0, 1, false, HANGUL_CHARSET, 0, 0, 0, L"Noto Sans KR Bold", &m_pFont);
-	m_pSoundManager = new CSoundManager();
-	m_pSoundManager->Initialize(DXUTGetHWND(), 2);
+
+
+	/*m_pSoundManager = new CSoundManager();
+	m_pSoundManager->Initialize(DXUTGetHWND(), 2);*/
 }
 
 
 CGraphicsManager::~CGraphicsManager()
 {
+
+	//for (auto iter : m_mapSound)
+	//{
+	//	if (iter.second->IsSoundPlaying())
+	//		iter.second->Stop();
+	//	iter.second->Reset();
+	//	SAFE_DELETE(iter.second);
+	//}
+	//m_mapSound.clear();
+	//SAFE_DELETE(m_pSoundManager);
+
+
+
 	for (auto iter : m_mapSprite)
 	{
 		SAFE_DELETE(iter.second);
 	}
 	m_mapSprite.clear();
-	for (auto iter : m_mapSound)
-	{
-		iter.second->Stop();
-		iter.second->Reset();
-		SAFE_DELETE(iter.second);
-	}
-	m_mapSound.clear();
-
-	SAFE_DELETE(m_pSoundManager);
 
 	for (auto iter : m_mapMesh)
 	{
 		SAFE_DELETE(iter.second);
 	}
 	m_mapMesh.clear();
+
+	
 
 	SAFE_RELEASE(m_pSprite);
 	SAFE_RELEASE(m_pFont);
@@ -117,31 +125,32 @@ void CGraphicsManager::AddMesh(string _Key, string _Path, string _MapPath)
 
 CSound * CGraphicsManager::AddSound(string _Key, wstring _Path)
 {
-	CSound * pSound = nullptr;
+	CSound * pSound;
 	m_pSoundManager->Create(&pSound, (LPWSTR)_Path.c_str());
+
 	if (pSound != nullptr)
 	{
 		m_mapSound.insert(make_pair(_Key, pSound));
-		return pSound;
 	}
-	return nullptr;
 }
 
 void CGraphicsManager::Play(string _Key, bool _bLoop)
 {
-	if (m_mapSound[_Key]->IsSoundPlaying() == false)
-		m_mapSound[_Key]->Play(0, _bLoop);
+	m_mapSound[_Key]->Play(0 ,_bLoop );
 }
 
 void CGraphicsManager::dPlay(string _Key)
 {
 	LPDIRECTSOUNDBUFFER buf;
 
-	m_pSoundManager->GetDirectSound()->DuplicateSoundBuffer(m_mapSound[_Key]->GetBuffer(0), &buf);
-
+	m_pSoundManager->GetDirectSound()->DuplicateSoundBuffer(
+		m_mapSound[_Key]->GetBuffer(0), &buf);
+	
 	buf->SetCurrentPosition(0);
 
-	buf->Play(0, 0, 0);
+	buf->Play(0,0,0);
+
+	
 }
 
 void CGraphicsManager::Stop(string _Key)
@@ -186,15 +195,15 @@ void CGraphicsManager::Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vecto
 	else if (_Mode == RenderMode::RM_Billboard)
 	{
 		m_pSprite->SetWorldViewLH(nullptr, &CAMERA.m_matView);
-		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_BILLBOARD | D3DXSPRITE_OBJECTSPACE); 
+		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND  | D3DXSPRITE_OBJECTSPACE | D3DXSPRITE_BILLBOARD);
 
 		
 		g_Device->SetRenderState(D3DRS_ZENABLE, false);
 	}
 	else if (_Mode == RenderMode::RM_BillboardNonUI)
 	{
-		m_pSprite->SetWorldViewLH(nullptr, &CAMERA.m_matView);
-		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND | D3DXSPRITE_BILLBOARD | D3DXSPRITE_OBJECTSPACE);
+		m_pSprite->SetWorldViewLH(nullptr, & CAMERA.m_matView);
+		m_pSprite->Begin(D3DXSPRITE_ALPHABLEND| D3DXSPRITE_OBJECTSPACE | D3DXSPRITE_BILLBOARD);
 	}
 
 	m_pSprite->SetTransform(&_matWorld);
@@ -204,7 +213,6 @@ void CGraphicsManager::Render_Sprite(CSprite * _pSprite, Matrix _matWorld, Vecto
 	m_pSprite->Draw(_pSprite->m_pTexture, &re, &Center, nullptr, _Color);
 
 	m_pSprite->End();
-	m_pSprite->SetWorldViewLH(nullptr, nullptr);
 	g_Device->SetRenderState(D3DRS_ZENABLE, true);
 }
 

@@ -15,6 +15,9 @@ void CPlayerMovement::Awake()
 	tf->m_vScale = Vector3(0.01f, 0.01f, 0.01f);
 	tf->m_vPos = Vector3(0, 0, 0);
 	CAMERA.Follow(go,5.5f);
+	
+	ac<CCollider>()->Init(0.7f);
+
 
 	ac<CMeshRenderer>()->Init(MESH("PLAYER_RIFLE_IDLE (1)"));
 	ac<CAnimator3D>();
@@ -41,7 +44,7 @@ void CPlayerMovement::Awake()
 
 void CPlayerMovement::Start()
 {
-
+	
 }
 
 void CPlayerMovement::Update()
@@ -293,6 +296,12 @@ if(MoveDirection.z == 1 || bMove== false && m_bFixPlayerRotation == false)
 			EFFECT2(tf->m_vPos + Axis[3] * 7, Vector3(0.0125, 0.0125, 0.0125), "EFFECT_PLAYER_SKILL_02");
 			return false;
 		});
+	}
+
+	if (INPUT.KeyDown('Z'))
+	{
+		CGameObject * Enemy = OBJ.Create();
+		Enemy->ac<CObstacle>()->Init(ObstacleType::Thom,tf->m_vPos);
 	}
 }
 

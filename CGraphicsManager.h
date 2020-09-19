@@ -21,7 +21,6 @@ private:
 	map<string, CSound *> m_mapSound;
 
 
-
 public:
 	map<string, CMesh * > m_mapMesh;
 	CSprite * FindSprite(string _Key);

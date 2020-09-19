@@ -48,5 +48,7 @@ public:
 	CGameObject * m_pHpGague = nullptr;
 	CGameObject * m_pHpGagueYellow = nullptr;
 	CGameObject * m_pShadow = nullptr;
+
+	CGameObject* m_pHpText = nullptr; 
 };
 
